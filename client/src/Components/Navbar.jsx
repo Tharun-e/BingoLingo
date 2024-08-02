@@ -31,7 +31,7 @@ const Navbar = () => {
   }, [menuOpen]);
 
   useEffect(() => {
-    setMenuOpen(false); // Close the menu when the route changes
+    setMenuOpen(false); 
   }, [location]);
 
   return (
@@ -73,23 +73,23 @@ const styles = {
     top: '0',
     left: '0',
     zIndex: '1000',
-    fontSize: '1.2rem', // Adjust as needed
+    fontSize: '1.2rem', 
   },
   logo: {
     flex: 1,
   },
   logoImage: {
-    height: '50px', // Adjust logo size as needed
+    height: '50px',
     cursor: 'pointer',
     borderRadius: '15px',
     border: '2px solid #fff',
   },
   brandName: {
-    flex: 2, // Adjust this value to move the brand name towards the center
+    flex: 2, 
     textAlign: 'center',
     fontWeight: 'bold',
-    color: '#000', // Change as needed
-    marginLeft: '-580px', // Move the brand name towards the left
+    color: '#000', 
+    marginLeft: '-580px', 
     fontSize:'25px',
     fontFamily: '"Arial Black',
   },
@@ -97,8 +97,8 @@ const styles = {
     color: 'black',
     display: 'block',
     cursor: 'pointer',
-    fontSize: '2rem', // Adjust size if needed
-    marginRight: '60px', // Moves the menu icon slightly left by adding margin on the right
+    fontSize: '2rem', 
+    marginRight: '60px', 
   },
   navList: {
     display: 'flex',
@@ -106,8 +106,8 @@ const styles = {
     padding: '0',
     margin: '0',
     position: 'absolute',
-    top: '60px', // Adjust based on the height of the navbar
-    right: '20px', // Adjust to move menu towards the left
+    top: '60px', 
+    right: '20px', 
     backgroundColor: '#FFDAB9',
     width: '200px',
     flexDirection: 'column',
@@ -129,7 +129,7 @@ const styles = {
   navLinkHover: {
     color: '#b3e0ff',
   },
-  // Responsive styles
+  
   '@media (max-width: 992px)': {
     navbar: {
       padding: '10px 15px',
@@ -141,13 +141,13 @@ const styles = {
   '@media (max-width: 768px)': {
     menuIcon: {
       display: 'block',
-      marginRight: '15px', // Adjust for smaller screens if needed
+      marginRight: '15px', 
     },
     navList: {
       flexDirection: 'column',
       position: 'absolute',
       top: '60px',
-      right: '20px', // Adjust to move menu towards the left
+      right: '20px', 
       backgroundColor: '#0077ff',
       width: '200px',
     },

@@ -5,14 +5,13 @@ const Courses = () => {
     return (
         <>
             <style jsx>{`
-                /* Ensure no horizontal overflow and cover the entire viewport */
                 html, body {
                     margin-top: 10px;
                     padding: 0;
                     overflow-x: hidden;
                     height: 100%;
                     width: 100%;
-                    box-sizing: border-box; /* Include padding and borders in total width and height */
+                    box-sizing: border-box;
                 }
 
                 .main-banner {
@@ -20,13 +19,13 @@ const Courses = () => {
                     background-size: cover;
                     color: #fff;
                     text-align: center;
-                    width: 100vw; /* Full viewport width */
-                    height: 60vh; /* Full viewport height */
+                    width: 100vw;
+                    height: 60vh;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding-top: 70px; /* Adjust this value according to the height of your Navbar */
-                    box-sizing: border-box; /* Ensure padding and borders do not affect the width */
+                    padding-top: 70px;
+                    box-sizing: border-box;
                     animation: fadeInUp 1s ease-in-out forwards;
                     margin-top: 0px;
                 }
@@ -59,7 +58,7 @@ const Courses = () => {
 
                 .course-list {
                     display: flex;
-                    flex-direction: row; /* Default to row for larger screens */
+                    flex-direction: row;
                     justify-content: center;
                     gap: 20px;
                     flex-wrap: wrap;
@@ -75,7 +74,7 @@ const Courses = () => {
                     padding: 10px 20px;
                     text-align: center;
                     margin: 10px;
-                    min-height: 400px; /* Ensures the course card is taller */
+                    min-height: 400px;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
@@ -103,10 +102,9 @@ const Courses = () => {
 
                 .content {
                     flex: 1;
-                    padding-bottom: 70px; /* Added padding to ensure content is not hidden behind the footer */
+                    padding-bottom: 70px;
                 }
 
-                /* Responsive design */
                 @media (max-width: 1200px) {
                     .main-banner h1 {
                         font-size: 2.5em;
@@ -125,7 +123,7 @@ const Courses = () => {
                     }
 
                     .course-list {
-                        flex-direction: column; /* Stack course cards vertically */
+                        flex-direction: column;
                         align-items: center;
                     }
                 }

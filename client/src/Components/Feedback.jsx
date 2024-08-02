@@ -3,7 +3,6 @@ import React from "react";
 const FAQAndHelp = () => {
   return (
     <div>
-      {/* Internal CSS */}
       <style jsx>{`
         body {
           font-family: 'Heebo', sans-serif;
@@ -50,15 +49,12 @@ const FAQAndHelp = () => {
         }
       `}</style>
 
-      {/* Header Start */}
       <div className="page-header">
         <div className="container">
           <h1 className="display-3" style={{color:'black'}}>FAQ & Help</h1>
         </div>
       </div>
-      {/* Header End */}
 
-      {/* FAQ & Help Content Start */}
       <div className="container content">
         <h2 className="section-title">Frequently Asked Questions (FAQ)</h2>
 
@@ -102,7 +98,6 @@ const FAQAndHelp = () => {
           If you have any other questions or need further assistance, please don't hesitate to reach out to us. We're here to help you with any issues or concerns you may have regarding our services.
         </p>
       </div>
-      {/* FAQ & Help Content End */}
     </div>
   );
 };

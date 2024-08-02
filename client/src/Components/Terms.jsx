@@ -3,7 +3,7 @@ import React from "react";
 const TermsAndConditions = () => {
   return (
     <div>
-      {/* Internal CSS */}
+      
       <style jsx>{`
         body {
           font-family: 'Heebo', sans-serif;
@@ -44,15 +44,15 @@ const TermsAndConditions = () => {
         }
       `}</style>
 
-      {/* Header Start */}
+     
       <div className="page-header">
         <div className="container">
           <h1 className="display-3" style={{color:'black'}}>Terms and Conditions</h1>
         </div>
       </div>
-      {/* Header End */}
+     
 
-      {/* Terms and Conditions Content Start */}
+      
       <div className="container content">
         <h2 className="section-title">Terms and Conditions for BingoLingo</h2>
         <p>
@@ -113,7 +113,7 @@ const TermsAndConditions = () => {
           Thank you for using BingoLingo. We hope you enjoy our services and find them valuable.
         </p>
       </div>
-      {/* Terms and Conditions Content End */}
+      
     </div>
   );
 };

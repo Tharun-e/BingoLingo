@@ -43,15 +43,9 @@ const HindiQuiz = () => {
         results.style.display = 'none';
     }
 
-    const tryAgain = () => {
-        window.location.reload();
-    }
-
     return (
         <div>
             <style jsx>{`
-                
-
                 .quiz-container {
                     max-width: 600px;
                     margin: 0 auto;
@@ -123,7 +117,7 @@ const HindiQuiz = () => {
                     font-weight: bold;
                 }
 
-                /* Modal styling */
+                
                 .modal {
                     display: none; 
                     position: fixed; 

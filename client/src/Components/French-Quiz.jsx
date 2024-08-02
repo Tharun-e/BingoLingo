@@ -1,5 +1,5 @@
 import React from 'react';
-import './Styles.css'; // Assuming you have a separate CSS file for shared styles
+
 
 const FrenchQuiz = () => {
     const submitQuiz = () => {
@@ -49,7 +49,6 @@ const FrenchQuiz = () => {
     return (
         <div>
             <style jsx>{`
-                /* Base styles */
                 html, body {
                     margin: 0;
                     padding: 0;
@@ -65,7 +64,6 @@ const FrenchQuiz = () => {
                     flex: 1;
                 }
 
-                /* Header styling */
                 header {
                     display: flex;
                     justify-content: space-between;
@@ -76,8 +74,6 @@ const FrenchQuiz = () => {
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 }
 
-                
-                /* Main content styling */
                 main {
                     flex: 1;
                     padding: 20px;
@@ -166,7 +162,6 @@ const FrenchQuiz = () => {
                     to { opacity: 1; }
                 }
 
-                /* Footer styling */
                 footer {
                     background: #00aaff;
                     color: #fff;
@@ -177,7 +172,6 @@ const FrenchQuiz = () => {
                     bottom: 0;
                 }
 
-                /* Modal styling */
                 .modal {
                     display: none; 
                     position: fixed; 
@@ -254,7 +248,6 @@ const FrenchQuiz = () => {
                                 <li><input type="radio" name="french-2" value="Non" /> Non</li>
                             </ul>
                         </div>
-                        {/* Add more questions as needed */}
                         <div style={{ textAlign: 'center' }}>
                             <button type="button" className="submit-button" onClick={submitQuiz}>Submit Answers</button>
                         </div>

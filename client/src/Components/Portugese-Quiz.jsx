@@ -30,7 +30,7 @@ function PortugueseQuiz() {
     return (
         <div>
             <style jsx>{`
-                /* Base styles */
+               
                 html, body {
                     margin: 0;
                     padding: 0;
@@ -46,7 +46,7 @@ function PortugueseQuiz() {
                     flex: 1;
                 }
 
-                /* Header styling */
+                
                 header {
                     display: flex;
                     justify-content: space-between;
@@ -89,7 +89,7 @@ function PortugueseQuiz() {
                     color: #e0f7ff;
                 }
 
-                /* Main content styling */
+                
                 main {
                     flex: 1;
                     padding: 20px;
@@ -163,7 +163,7 @@ function PortugueseQuiz() {
                     color: #00aaff;
                 }
 
-                /* Footer styling */
+               
                 footer {
                     background: #00aaff;
                     color: #fff;
@@ -174,7 +174,7 @@ function PortugueseQuiz() {
                     bottom: 0;
                 }
 
-                /* Modal styling */
+               
                 .modal {
                     display: none; 
                     position: fixed; 
@@ -228,7 +228,7 @@ function PortugueseQuiz() {
                     background-color: #0088cc;
                 }
                 
-                /* Responsive design */
+               
                 @media (max-width: 768px) {
                     .quiz-section {
                         padding: 15px;

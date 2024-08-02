@@ -3,7 +3,6 @@ import React from "react";
 const AboutUs = () => {
   return (
     <div>
-      {/* Internal CSS */}
       <style jsx>{`
         body {
           font-family: 'Heebo', sans-serif;
@@ -110,17 +109,14 @@ const AboutUs = () => {
           }
         }
       `}</style>
-
-      {/* Banner Start */}
       <section className="main-banner">
         <div className="banner-content">
           
           
         </div>
       </section>
-      {/* Banner End */}
 
-      {/* About Start */}
+    
       <div className="container-xxl py-5">
         <div className="container about-container">
           <div className="about-content">
@@ -174,7 +170,6 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      {/* About End */}
     </div>
   );
 };

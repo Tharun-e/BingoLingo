@@ -3,7 +3,7 @@ import React from "react";
 const PrivacyPolicy = () => {
   return (
     <div>
-      {/* Internal CSS */}
+      
       <style jsx>{`
         body {
           font-family: 'Heebo', sans-serif;
@@ -41,15 +41,15 @@ const PrivacyPolicy = () => {
         }
       `}</style>
 
-      {/* Header Start */}
+     
       <div className="page-header">
         <div className="container">
           <h1 className="display-3" style={{color:'black'}}>Privacy Policy</h1>
         </div>
       </div>
-      {/* Header End */}
+ 
 
-      {/* Privacy Policy Content Start */}
+      
       <div className="container content">
         <h2 className="section-title">Privacy Policy for BingoLingo</h2>
         <p>
@@ -101,7 +101,7 @@ const PrivacyPolicy = () => {
           Thank you for trusting BingoLingo with your information. We are dedicated to protecting your privacy and ensuring a secure online experience.
         </p>
       </div>
-      {/* Privacy Policy Content End */}
+      
     </div>
   );
 };

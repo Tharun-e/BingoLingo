@@ -9,7 +9,7 @@ const Testimonial = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await axios.get('https://apigenerator.dronahq.com/api/6bfvsWuK/testimo'); // Replace with your API endpoint
+        const response = await axios.get('https://apigenerator.dronahq.com/api/6bfvsWuK/testimo');
         setTestimonials(response.data);
         setLoading(false);
       } catch (err) {
