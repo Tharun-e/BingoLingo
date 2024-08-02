@@ -1,0 +1,763 @@
+/* Base styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* Flexbox layout for the entire page */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body takes up at least the full viewport height */
+}
+
+/* Main content area */
+main {
+    flex: 1; /* Allows the main content to expand and push the footer down */
+}
+
+/* Header styling */
+header {
+    background-color:#00aaff;
+    padding: 0.5rem 0.7rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1 0.5rem;
+    position: fixed; /* Add this line */
+    width: 100%; /* Add this line */
+    top: 0; /* Add this line */
+    z-index: 1000; /* Add this line */
+}
+body {
+    padding-top: 80px; /* Adjust this value based on the height of your header */
+}
+
+
+/* Logo styling */
+.logo img {
+    height: 100px;
+    transition: transform 0.3s ease;
+    border-radius: 20px;
+    margin-right: 100px;
+    
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+/* Navigation styling */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    margin-right: 20px;
+}
+
+
+
+
+
+/* Navigation list styling */
+.nav-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-list li {
+    margin: 0 15px;
+}
+
+.nav-list li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: #e0f7ff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .nav-list {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #00aaff;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    .nav-list.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .hamburger.active::before {
+        transform: rotate(45deg);
+    }
+
+    .hamburger.active::after {
+        transform: rotate(-45deg);
+    }
+
+    .hamburger.active {
+        background: transparent;
+    }
+}
+
+/* Hero section styling */
+.hero {
+    text-align: center;
+    padding: 200px 20px;
+    background: #e0f7ff;
+    border-bottom: 2px solid #00aaff;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    opacity: 0;
+    animation: slideIn 1s ease-out 0.5s forwards;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #555;
+    opacity: 0;
+    animation: slideIn 1s ease-out 1s forwards;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #fff;
+    color: #00aaff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s ease, color 0.3s ease;
+    font-size: 1rem;
+}
+
+.cta-button:hover {
+    background: #00aaff;
+    color: #fff;
+}
+
+/* Features section styling */
+.features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 30px 20px;
+    background: #fff;
+}
+
+.feature {
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.feature:hover img {
+    transform: scale(1.05);
+}
+
+.feature h2 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Popular Courses section styling */
+.popular-courses {
+    padding: 30px 20px;
+    background: #f9f9f9;
+}
+
+.popular-courses h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.course-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.course-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card img {
+    width: 100%;
+    border-bottom: 2px solid #00aaff;
+}
+
+.course-card h3 {
+    margin: 15px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.course-card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Testimonials section styling */
+.testimonials {
+    padding: 30px 20px;
+    background: #fff;
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.testimonial {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.testimonial p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Footer styling */
+footer {
+    background: #00aaff;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+    }
+
+    .course-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .course-card {
+        width: 90%;
+    }
+
+    .language-card {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    nav ul li {
+        margin: 0 5px;
+    }
+
+    nav ul li a {
+        font-size: 0.8rem;
+    }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+.cta-button {
+    display: inline-block;
+    background: #fff;
+    color: #00aaff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s ease, color 0.3s ease;
+    font-size: 1rem;
+}
+
+.cta-button:hover {
+    background: #00aaff;
+    color: #fff;
+}
+
+/* Start quiz button styling */
+.start-quiz-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #fb873f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.start-quiz-btn a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.start-quiz-btn:hover {
+    background-color: #e5722a;
+    transform: scale(1.05);
+}
+
+/* Quiz styling */
+.quiz {
+    padding: 30px 20px;
+    background: #fff;
+}
+
+.quiz h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #00aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0088cc;
+}
+
+.result {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+/* Video container styling */
+.video-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.video-container iframe {
+    max-width: 100%;
+    
+    height: auto;
+    border: none;
+    padding: 10px;
+}
+
+/* Learn More button styling */
+.learn-more-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.learn-more-button {
+    display: inline-block;
+    background-color: #ff4c4c; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.learn-more-button:hover {
+    background-color: #cc3a3a; /* Darker background color on hover */
+    transform: scale(1.05);
+}
+.footer {
+    background-color: #1c1c3b;
+    color: white;
+    padding: 40px 0;
+}
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.footer .column {
+    flex: 1;
+    margin-right: 20px;
+}
+.footer .column:last-child {
+    margin-right: 0;
+}
+.footer h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+.footer ul li {
+    margin-bottom: 10px;
+}
+.footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+.footer ul li a:hover {
+    text-decoration: underline;
+}
+.footer .contact-info {
+    display: flex;
+    flex-direction: column;
+}
+.footer .contact-info div {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.footer .contact-info div span {
+    margin-left: 10px;
+}
+.footer .social-icons {
+    display: flex;
+    margin-top: 10px;
+}
+.footer .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #ff7a59;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.footer .social-icons a:hover {
+    background-color: #ff4a29;
+}
+.footer .newsletter {
+    display: flex;
+    flex-direction: column;
+}
+.footer .newsletter input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+.footer .newsletter button {
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #ff7a59;
+    color: white;
+    cursor: pointer;
+}
+.footer .newsletter button:hover {
+    background-color: #ff4a29;
+}
+.footer .bottom-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+.footer .bottom-text a {
+    color: #00bfff;
+    text-decoration: none;
+}
+.footer .bottom-text a:hover {
+    text-decoration: underline;
+}
+/* Footer styling */
+footer {
+    background: #00aaff;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 768px) {
+    .footer .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .footer .column {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .footer .social-icons {
+        margin-top: 20px;
+    }
+
+    .footer .newsletter {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer .newsletter input {
+        width: calc(100% - 22px); /* Adjust width to fit inside container */
+    }
+
+    .footer .newsletter button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .footer .bottom-text {
+        font-size: 0.8em; /* Adjust font size for smaller screens */
+    }
+}
+/* Base styles for the navbar toggle */
+.nav-toggle {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    margin-right: 20px;
+}
+
+/* Navigation list styling for desktop */
+.nav-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-list li {
+    margin: 0 15px;
+}
+
+.nav-list li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: #e0f7ff;
+}
+
+/* Responsive design for the navbar */
+@media (max-width: 768px) {
+    .nav-list {
+        display: none; /* Hide menu items by default */
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        right: 20px;
+        background: #00aaff;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    .nav-list.active {
+        display: flex; /* Show menu items when active */
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-toggle {
+        display: block; /* Show menu button on small screens */
+    }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 576px) {
+    .nav-list li {
+        margin: 10px 0; /* Adjust spacing for smaller screens */
+    }
+
+    .nav-list li a {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+}
