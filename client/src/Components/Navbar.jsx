@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { color } from '@mui/system';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,9 +39,13 @@ const Navbar = () => {
       <div style={styles.logo}>
         <img src="/Photos/logo.jpeg" alt="Logo" style={styles.logoImage} />
       </div>
+      
+      <div style={styles.brandName}>BINGOLINGO</div>
+      
       <div style={styles.menuIcon} onClick={toggleMenu}>
         {menuOpen ? <CloseIcon /> : <MenuIcon />}
       </div>
+      
       <ul
         ref={menuRef}
         style={{ ...styles.navList, display: menuOpen ? 'flex' : 'none' }}
@@ -70,6 +73,7 @@ const styles = {
     top: '0',
     left: '0',
     zIndex: '1000',
+    fontSize: '1.2rem', // Adjust as needed
   },
   logo: {
     flex: 1,
@@ -79,6 +83,15 @@ const styles = {
     cursor: 'pointer',
     borderRadius: '15px',
     border: '2px solid #fff',
+  },
+  brandName: {
+    flex: 2, // Adjust this value to move the brand name towards the center
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#000', // Change as needed
+    marginLeft: '-580px', // Move the brand name towards the left
+    fontSize:'25px',
+    fontFamily: '"Arial Black',
   },
   menuIcon: {
     color: 'black',
