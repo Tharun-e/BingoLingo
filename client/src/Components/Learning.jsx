@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 const LearningPage = () => {
-    const { language } = useParams(); 
+    const { language } = useParams(); // Get language from URL params
     const [content, setContent] = useState({
         title: 'Course Not Found',
         introText: 'Sorry, we could not find the course you are looking for.',
@@ -11,13 +11,13 @@ const LearningPage = () => {
     });
 
     useEffect(() => {
-        
+        // Set content based on the selected language
         switch (language) {
             case 'french':
                 setContent({
                     title: 'Learn French',
                     introText: 'Welcome to the French language course. You will start with basic greetings, vocabulary, and essential grammar.',
-                    videoSrc: 'https://www.youtube.com/embed/wtiFx1TRCq0?si=diAR8WO4jAjTip1I', 
+                    videoSrc: 'https://www.youtube.com/embed/wtiFx1TRCq0?si=diAR8WO4jAjTip1I', // Replace with actual video ID
                     learnMoreHref: '/basic-french',
                 });
                 break;
@@ -25,7 +25,7 @@ const LearningPage = () => {
                 setContent({
                     title: 'Learn Hindi',
                     introText: 'Welcome to the Hindi language course. Begin with learning basic pronunciation, essential vocabulary, and simple sentences.',
-                    videoSrc: 'https://www.youtube.com/embed/1lrz11BbqCA?si=amNu91gGxdSEJ7uJ',
+                    videoSrc: 'https://www.youtube.com/embed/1lrz11BbqCA?si=amNu91gGxdSEJ7uJ', // Replace with actual video ID
                     learnMoreHref: '/basic-hindi',
                 });
                 break;
@@ -33,7 +33,7 @@ const LearningPage = () => {
                 setContent({
                     title: 'Learn Portuguese',
                     introText: 'Welcome to the Portuguese language course. Start with basic expressions, common phrases, and introductory grammar.',
-                    videoSrc: 'https://www.youtube.com/embed/RkOqjkero10?si=-Uvw-GXl89-pFRk1', 
+                    videoSrc: 'https://www.youtube.com/embed/RkOqjkero10?si=-Uvw-GXl89-pFRk1', // Replace with actual video ID
                     learnMoreHref: '/basic-portugese',
                 });
                 break;
@@ -51,7 +51,7 @@ const LearningPage = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
             <style jsx>{`
-                
+                /* Base styles */
                 html, body {
                     margin: 0;
                     padding: 0;
@@ -63,21 +63,21 @@ const LearningPage = () => {
                     flex-direction: column;
                 }
 
-               
+                /* Main container */
                 .main-container {
                     display: flex;
                     flex-direction: column;
                     flex: 1;
                 }
 
-                
+                /* Main content styling */
                 main {
                     padding: 20px;
                     background: #fff;
                     margin: 0 auto;
                     max-width: 800px;
                     text-align: center;
-                    flex: 1; 
+                    flex: 1; /* Ensures the main content area takes up available space */
                 }
 
                 #learning-title {
@@ -153,7 +153,7 @@ const LearningPage = () => {
                     transform: scale(1.05);
                 }
 
-                
+                /* Banner styling */
                 .main-banner {
                     background: url('/Photos/lb1.gif') no-repeat center center;
                     background-size: cover;
@@ -193,7 +193,7 @@ const LearningPage = () => {
                     }
                 }
 
-               
+                /* Responsive design */
                 @media (max-width: 1200px) {
                     .main-banner h1 {
                         font-size: 2.5em;

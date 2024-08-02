@@ -12,6 +12,7 @@ const LearnBasicPortuguese = () => {
         <div className="container">
             <style>
                 {`
+                /* Base styles */
                 html, body {
                     margin: 0;
                     padding: 0;
@@ -27,6 +28,7 @@ const LearnBasicPortuguese = () => {
                     flex: 1;
                 }
 
+                /* Header styling */
                 header {
                     display: flex;
                     justify-content: space-between;
@@ -69,6 +71,7 @@ const LearnBasicPortuguese = () => {
                     color: #f9d8d8;
                 }
 
+                /* Main content styling */
                 main {
                     flex: 1;
                     padding: 20px;
@@ -119,6 +122,7 @@ const LearnBasicPortuguese = () => {
                     background-color: #0088cc;
                 }
 
+                /* Footer styling */
                 footer {
                     background: #00aaff;
                     color: #fff;
@@ -129,18 +133,19 @@ const LearnBasicPortuguese = () => {
                     bottom: 0;
                 }
 
+                /* Banner styling */
                 .main-banner {
                     background: url('/Photos/pb.gif') no-repeat center center;
                     background-size: cover;
                     color: #fff;
                     text-align: center;
-                    width: 100vw;
-                    height: 60vh;
+                    width: 100vw; /* Full viewport width */
+                    height: 60vh; /* Full viewport height */
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding-top: 70px;
-                    box-sizing: border-box;
+                    padding-top: 70px; /* Adjust this value according to the height of your Navbar */
+                    box-sizing: border-box; /* Ensure padding and borders do not affect the width */
                     animation: fadeInUp 1s ease-in-out forwards;
                 }
 
@@ -169,6 +174,7 @@ const LearnBasicPortuguese = () => {
                     }
                 }
 
+                /* Responsive design */
                 @media (max-width: 1200px) {
                     .main-banner h1 {
                         font-size: 2.5em;
@@ -227,7 +233,9 @@ const LearnBasicPortuguese = () => {
                     <a href="/portuguese-quiz" className="know-your-knowledge-button">Know Your Knowledge</a>
                 </section>
             </main>
-            
+            <footer>
+                {/* Footer content here */}
+            </footer>
         </div>
     );
 };

@@ -147,7 +147,8 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    // Here you can handle the login logic
+    // If login is successful, navigate to the home page
     navigate('/');
   };
 

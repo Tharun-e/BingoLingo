@@ -1,6 +1,6 @@
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel'; 
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; 
+import { Carousel } from 'react-responsive-carousel'; // Import the carousel component
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
 
 const Home = () => {
     const handleNavToggle = () => {
@@ -14,28 +14,28 @@ const Home = () => {
         <div>
             <style>
                 {`
-                
+                    /* Base styles */
                     body, html {
                         margin: 0;
                         padding: 0;
-                        background-color: #ffffff; 
+                        background-color: #ffffff; /* Ensure background is white */
                         height: 100%;
                         font-family: Arial, sans-serif;
                     }
 
-                    
+                    /* Flexbox layout for the entire page */
                     #root {
                         display: flex;
                         flex-direction: column;
-                        min-height: 100vh; 
+                        min-height: 100vh; /* Ensure root covers full height */
                     }
 
-                    
+                    /* Main content area */
                     main {
-                        flex: 1;
+                        flex: 1; /* Allows the main content to expand and push the footer down */
                     }
 
-                
+                    /* Header styling */
                     header {
                         background-color: #00aaff;
                         padding: 1rem 0.5rem;
@@ -43,13 +43,13 @@ const Home = () => {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        position: fixed; 
-                        width: 100%; 
-                        top: 0; 
-                        z-index: 1000; 
+                        position: fixed; /* Add this line */
+                        width: 100%; /* Add this line */
+                        top: 0; /* Add this line */
+                        z-index: 1000; /* Add this line */
                     }
 
-                    
+                    /* Logo styling */
                     .logo img {
                         height: 100px;
                         transition: transform 0.3s ease;
@@ -61,7 +61,7 @@ const Home = () => {
                         transform: scale(1.1);
                     }
 
-                    
+                    /* Navigation styling */
                     nav {
                         display: flex;
                         align-items: center;
@@ -77,7 +77,7 @@ const Home = () => {
                         margin-right: 20px;
                     }
 
-                    
+                    /* Navigation list styling */
                     .nav-list {
                         list-style: none;
                         padding: 0;
@@ -101,7 +101,7 @@ const Home = () => {
                         color: #e0f7ff;
                     }
 
-                    
+                    /* Responsive design */
                     @media (max-width: 768px) {
                         .nav-list {
                             display: none;
@@ -132,7 +132,7 @@ const Home = () => {
                         }
                     }
 
-                    
+                    /* Hero section styling */
                     .hero {
                         text-align: center;
                         padding: 200px 20px;
@@ -175,7 +175,7 @@ const Home = () => {
                         color: #fff;
                     }
 
-                    
+                    /* Features section styling */
                     .features {
                         display: flex;
                         justify-content: center;
@@ -210,7 +210,7 @@ const Home = () => {
                         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
                     }
 
-                    
+                    /* Popular Courses section styling */
                     .popular-courses {
                         padding: 30px 20px;
                         background: #f9f9f9;
@@ -262,7 +262,7 @@ const Home = () => {
                         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
                     }
 
-                    
+                    /* Testimonials section styling */
                     .testimonials {
                         padding: 30px 20px;
                         background: #fff;
@@ -296,14 +296,14 @@ const Home = () => {
                         color: #555;
                     }
 
-                    
+                    /* Responsive adjustments for features section */
                     @media (max-width: 576px) {
                         .feature {
                             width: 100%;
                         }
                     }
 
-                    
+                    /* Responsive adjustments for popular courses section */
                     @media (max-width: 576px) {
                         .course-card {
                             max-width: 100%;
@@ -330,17 +330,17 @@ const Home = () => {
                         <div>
                             <h1>Welcome to the Language Learning Platform</h1>
                             <p>Your gateway to learning new languages effectively and interactively.</p>
-                            
+                            {/* <a href="courses.html" className="cta-button">Start Learning</a> */}
                         </div>
                         <div>
                             <h1>Discover New Languages</h1>
                             <p>Explore a wide range of languages and improve your skills.</p>
-                            
+                            {/* <a href="courses.html" className="cta-button">Browse Courses</a> */}
                         </div>
                         <div>
                             <h1>Join Our Community</h1>
                             <p>Connect with learners and tutors from around the world.</p>
-                            
+                            {/* <a href="signup.html" className="cta-button">Sign Up Now</a> */}
                         </div>
                     </Carousel>
                 </section>

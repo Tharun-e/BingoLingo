@@ -10,12 +10,12 @@ const ReviewPage = () => {
 
   const handleSubmit = () => {
     setSubmitted(true);
-    
+    // Here you would typically send the rating to a server
   };
 
   return (
     <div>
-     
+      {/* Internal CSS */}
       <style jsx>{`
         body {
           font-family: 'Heebo', sans-serif;
@@ -95,15 +95,15 @@ const ReviewPage = () => {
         }
       `}</style>
 
-     
+      {/* Header Start */}
       <div className="page-header">
         <div className="container">
           <h1 className="display-3" style={{color:'black'}}>Reviews</h1>
         </div>
       </div>
-      
+      {/* Header End */}
 
-      
+      {/* Review Content Start */}
       <div className="container content">
         <h2 className="section-title">Share Your Experience</h2>
 
@@ -141,7 +141,7 @@ const ReviewPage = () => {
           Thank you for taking the time to review our services!
         </p>
       </div>
-      
+      {/* Review Content End */}
     </div>
   );
 };
