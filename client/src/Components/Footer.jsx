@@ -74,8 +74,8 @@ const Footer = () => {
                     }
 
                     .footer .social-icons a:hover {
-                        color: black;
-                    }
+    background-color: #ff4a29;
+}
 
                     .footer .newsletter input {
                         width: 100%;
