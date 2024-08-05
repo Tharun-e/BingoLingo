@@ -32,7 +32,7 @@ const AboutUs = () => {
         .about-content {
           max-width: 800px;
         }
-        /* Banner styling */
+        
         .main-banner {
           background: url('/Photos/ab.gif') no-repeat center center;
           background-size: cover;
