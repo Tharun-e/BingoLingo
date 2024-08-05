@@ -63,11 +63,11 @@ const Footer = () => {
                     .footer .social-icons a {
                         margin-right: 10px;
                         color: black;
-                        font-size: 1.5em; /* Increase the icon size if needed */
+                        font-size: 1.5em; 
                         text-decoration: none;
-                        background-color: #FFDAB9; /* Peach Puff color */
-                        border-radius: 50%; /* Round background */
-                        padding: 10px; /* Adjust size based on icon size */
+                        background-color: #FFDAB9; 
+                        border-radius: 50%; 
+                        padding: 10px; 
                         display: inline-flex;
                         align-items: center;
                         justify-content: center;
@@ -117,7 +117,7 @@ const Footer = () => {
                         text-decoration: underline;
                     }
 
-                    /* Responsive styling */
+                    
                     @media (max-width: 768px) {
                         .footer .container {
                             flex-direction: column;
@@ -146,7 +146,6 @@ const Footer = () => {
                 `}
             </style>
             <div className="container">
-                {/* Quick Link Column */}
                 <div className="column">
                     <h3>Quick Link</h3>
                     <ul>
@@ -157,7 +156,6 @@ const Footer = () => {
                         <li><a href="/review">Review</a></li>
                     </ul>
                 </div>
-                {/* Contact Column */}
                 <div className="column contact-info">
                     <h3>Contact</h3>
                     <div><i className="fas fa-map-marker-alt"></i><span>83 MP Street, Kovaipudhur, Coimbatore</span></div>
@@ -170,7 +168,6 @@ const Footer = () => {
                         <a href="#"><EmailIcon /></a>
                     </div>
                 </div>
-                {/* Newsletter Column */}
                 <div className="column newsletter">
                     <h3>Subscribe to our Newsletter</h3>
                     <p>Subscribe now and join our growing community of learners committed to lifelong education!</p>

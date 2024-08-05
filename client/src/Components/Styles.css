@@ -1,4 +1,4 @@
-/* Base styles */
+
 html, body {
     margin: 0;
     padding: 0;
@@ -8,19 +8,19 @@ html, body {
     color: #333;
 }
 
-/* Flexbox layout for the entire page */
+
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures the body takes up at least the full viewport height */
+    min-height: 100vh; 
 }
 
-/* Main content area */
+
 main {
-    flex: 1; /* Allows the main content to expand and push the footer down */
+    flex: 1; 
 }
 
-/* Header styling */
+
 header {
     background-color:#00aaff;
     padding: 0.5rem 0.7rem;
@@ -29,17 +29,17 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1 0.5rem;
-    position: fixed; /* Add this line */
-    width: 100%; /* Add this line */
-    top: 0; /* Add this line */
-    z-index: 1000; /* Add this line */
+    position: fixed;
+    width: 100%; 
+    top: 0; 
+    z-index: 1000; 
 }
 body {
-    padding-top: 80px; /* Adjust this value based on the height of your header */
+    padding-top: 80px;
 }
 
 
-/* Logo styling */
+
 .logo img {
     height: 100px;
     transition: transform 0.3s ease;
@@ -52,7 +52,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Navigation styling */
+
 nav {
     display: flex;
     align-items: center;
@@ -72,7 +72,7 @@ nav {
 
 
 
-/* Navigation list styling */
+
 .nav-list {
     list-style: none;
     padding: 0;
@@ -96,7 +96,7 @@ nav {
     color: #e0f7ff;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
     .nav-list {
         display: none;
@@ -139,7 +139,7 @@ nav {
     }
 }
 
-/* Hero section styling */
+
 .hero {
     text-align: center;
     padding: 200px 20px;
@@ -182,7 +182,7 @@ nav {
     color: #fff;
 }
 
-/* Features section styling */
+
 .features {
     display: flex;
     justify-content: center;
@@ -225,7 +225,7 @@ nav {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Popular Courses section styling */
+
 .popular-courses {
     padding: 30px 20px;
     background: #f9f9f9;
@@ -277,7 +277,7 @@ nav {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Testimonials section styling */
+
 .testimonials {
     padding: 30px 20px;
     background: #fff;
@@ -311,7 +311,7 @@ nav {
     color: #555;
 }
 
-/* Footer styling */
+
 footer {
     background: #00aaff;
     color: #fff;
@@ -322,7 +322,7 @@ footer {
     bottom: 0;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .hero {
         padding: 40px 20px;
@@ -368,7 +368,7 @@ footer {
     }
 }
 
-/* Keyframes for animations */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -423,7 +423,7 @@ footer {
     color: #fff;
 }
 
-/* Start quiz button styling */
+
 .start-quiz-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -448,7 +448,7 @@ footer {
     transform: scale(1.05);
 }
 
-/* Quiz styling */
+
 .quiz {
     padding: 30px 20px;
     background: #fff;
@@ -500,7 +500,7 @@ button:hover {
     font-size: 1.2rem;
     margin-top: 20px;
 }
-/* Video container styling */
+
 .video-container {
     margin: 20px 0;
     text-align: center;
@@ -514,7 +514,7 @@ button:hover {
     padding: 10px;
 }
 
-/* Learn More button styling */
+
 .learn-more-section {
     text-align: center;
     margin: 30px 0;
@@ -522,8 +522,8 @@ button:hover {
 
 .learn-more-button {
     display: inline-block;
-    background-color: #ff4c4c; /* Button background color */
-    color: #fff; /* Button text color */
+    background-color: #ff4c4c; 
+    color: #fff; 
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -532,7 +532,7 @@ button:hover {
 }
 
 .learn-more-button:hover {
-    background-color: #cc3a3a; /* Darker background color on hover */
+    background-color: #cc3a3a; 
     transform: scale(1.05);
 }
 .footer {
@@ -637,7 +637,7 @@ button:hover {
 .footer .bottom-text a:hover {
     text-decoration: underline;
 }
-/* Footer styling */
+
 footer {
     background: #00aaff;
     color: #fff;
@@ -648,7 +648,7 @@ footer {
     bottom: 0;
 }
 
-/* Responsive adjustments for footer */
+
 @media (max-width: 768px) {
     .footer .container {
         flex-direction: column;
@@ -673,7 +673,7 @@ footer {
 
 @media (max-width: 576px) {
     .footer .newsletter input {
-        width: calc(100% - 22px); /* Adjust width to fit inside container */
+        width: calc(100% - 22px); 
     }
 
     .footer .newsletter button {
@@ -682,12 +682,12 @@ footer {
     }
 
     .footer .bottom-text {
-        font-size: 0.8em; /* Adjust font size for smaller screens */
+        font-size: 0.8em; 
     }
 }
-/* Base styles for the navbar toggle */
+
 .nav-toggle {
-    display: none; /* Hidden by default */
+    display: none;
     background: none;
     border: none;
     cursor: pointer;
@@ -696,7 +696,7 @@ footer {
     margin-right: 20px;
 }
 
-/* Navigation list styling for desktop */
+
 .nav-list {
     list-style: none;
     padding: 0;
@@ -720,12 +720,12 @@ footer {
     color: #e0f7ff;
 }
 
-/* Responsive design for the navbar */
+
 @media (max-width: 768px) {
     .nav-list {
-        display: none; /* Hide menu items by default */
+        display: none; 
         position: absolute;
-        top: 60px; /* Adjust based on header height */
+        top: 60px; 
         right: 20px;
         background: #00aaff;
         flex-direction: column;
@@ -740,24 +740,24 @@ footer {
     }
 
     .nav-list.active {
-        display: flex; /* Show menu items when active */
+        display: flex; 
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
 
     .nav-toggle {
-        display: block; /* Show menu button on small screens */
+        display: block; 
     }
 }
 
-/* Responsive design for smaller screens */
+
 @media (max-width: 576px) {
     .nav-list li {
-        margin: 10px 0; /* Adjust spacing for smaller screens */
+        margin: 10px 0; 
     }
 
     .nav-list li a {
-        font-size: 0.9rem; /* Adjust font size for smaller screens */
+        font-size: 0.9rem;
     }
 }

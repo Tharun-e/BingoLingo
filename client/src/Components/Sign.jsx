@@ -147,8 +147,7 @@ const SignupPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you can handle the signup logic
-    // If signup is successful, navigate to the login page
+    
     navigate('/login');
   };
 

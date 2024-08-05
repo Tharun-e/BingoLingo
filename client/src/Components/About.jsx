@@ -3,7 +3,7 @@ import React from "react";
 const AboutUs = () => {
   return (
     <div>
-      {/* Internal CSS */}
+    
       <style jsx>{`
         body {
           font-family: 'Heebo', sans-serif;
@@ -38,13 +38,13 @@ const AboutUs = () => {
           background-size: cover;
           color: #fff;
           text-align: center;
-          width: 100vw; /* Full viewport width */
-          height: 60vh; /* Full viewport height */
+          width: 100vw; 
+          height: 60vh; 
           display: flex;
           justify-content: center;
           align-items: center;
-          padding-top: 70px; /* Adjust this value according to the height of your Navbar */
-          box-sizing: border-box; /* Ensure padding and borders do not affect the width */
+          padding-top: 70px; 
+          box-sizing: border-box; 
           animation: fadeInUp 1s ease-in-out forwards;
         }
 
@@ -73,7 +73,7 @@ const AboutUs = () => {
           }
         }
 
-        /* Responsive design */
+      
         @media (max-width: 1200px) {
           .main-banner h1 {
             font-size: 2.5em;
@@ -111,16 +111,16 @@ const AboutUs = () => {
         }
       `}</style>
 
-      {/* Banner Start */}
+      
       <section className="main-banner">
         <div className="banner-content">
           
           
         </div>
       </section>
-      {/* Banner End */}
+     
 
-      {/* About Start */}
+     
       <div className="container-xxl py-5">
         <div className="container about-container">
           <div className="about-content">
@@ -174,7 +174,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      {/* About End */}
+      
     </div>
   );
 };

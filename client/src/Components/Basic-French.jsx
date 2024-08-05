@@ -12,7 +12,7 @@ const LearnBasicFrench = () => {
         <div className="container">
             <style>
                 {`
-                /* Base styles */
+                
                 html, body {
                     margin: 0;
                     padding: 0;
@@ -28,7 +28,7 @@ const LearnBasicFrench = () => {
                     flex: 1;
                 }
 
-                /* Header styling */
+                
                 header {
                     display: flex;
                     justify-content: space-between;
@@ -71,7 +71,7 @@ const LearnBasicFrench = () => {
                     color: #e0f7ff;
                 }
 
-                /* Main content styling */
+                
                 main {
                     flex: 1;
                     padding: 20px;
@@ -104,7 +104,7 @@ const LearnBasicFrench = () => {
                     color: #0088cc;
                 }
 
-                /* Know Your Knowledge button styling */
+            
                 .know-your-knowledge-section {
                     margin-top: 30px;
                     text-align: center;
@@ -112,8 +112,8 @@ const LearnBasicFrench = () => {
 
                 .know-your-knowledge-button {
                     display: inline-block;
-                    background-color: #ff4c4c; /* Button background color */
-                    color: #fff; /* Button text color */
+                    background-color: #ff4c4c; 
+                    color: #fff; 
                     padding: 10px 20px;
                     border-radius: 5px;
                     text-decoration: none;
@@ -122,11 +122,11 @@ const LearnBasicFrench = () => {
                 }
 
                 .know-your-knowledge-button:hover {
-                    background-color: #cc3a3a; /* Darker background color on hover */
+                    background-color: #cc3a3a; 
                     transform: scale(1.05);
                 }
 
-                /* Footer styling */
+        
                 footer {
                     background: #00aaff;
                     color: #fff;
@@ -135,19 +135,19 @@ const LearnBasicFrench = () => {
                     width: 100%;
                 }
 
-                /* Banner styling */
+            
                 .main-banner {
                     background: url('/Photos/fb.gif') no-repeat center center;
                     background-size: cover;
                     color: #fff;
                     text-align: center;
-                    width: 100vw; /* Full viewport width */
-                    height: 60vh; /* Full viewport height */
+                    width: 100vw; 
+                    height: 60vh; 
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding-top: 70px; /* Adjust this value according to the height of your Navbar */
-                    box-sizing: border-box; /* Ensure padding and borders do not affect the width */
+                    padding-top: 70px;
+                    box-sizing: border-box; 
                     animation: fadeInUp 1s ease-in-out forwards;
                 }
 
@@ -176,7 +176,7 @@ const LearnBasicFrench = () => {
                     }
                 }
 
-                /* Responsive design */
+            
                 @media (max-width: 1200px) {
                     .main-banner h1 {
                         font-size: 2.5em;

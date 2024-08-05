@@ -123,7 +123,7 @@ const HindiQuiz = () => {
                     font-weight: bold;
                 }
 
-                /* Modal styling */
+                
                 .modal {
                     display: none; 
                     position: fixed; 

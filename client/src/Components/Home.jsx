@@ -1,6 +1,6 @@
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel'; // Import the carousel component
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
+import { Carousel } from 'react-responsive-carousel'; 
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; 
 
 const Home = () => {
     const handleNavToggle = () => {
@@ -14,28 +14,28 @@ const Home = () => {
         <div>
             <style>
                 {`
-                    /* Base styles */
+                    
                     body, html {
                         margin: 0;
                         padding: 0;
-                        background-color: #ffffff; /* Ensure background is white */
+                        background-color: #ffffff; 
                         height: 100%;
                         font-family: Arial, sans-serif;
                     }
 
-                    /* Flexbox layout for the entire page */
+                    
                     #root {
                         display: flex;
                         flex-direction: column;
-                        min-height: 100vh; /* Ensure root covers full height */
+                        min-height: 100vh; 
                     }
 
-                    /* Main content area */
+            
                     main {
-                        flex: 1; /* Allows the main content to expand and push the footer down */
+                        flex: 1; 
                     }
 
-                    /* Header styling */
+                   
                     header {
                         background-color: #00aaff;
                         padding: 1rem 0.5rem;
@@ -43,13 +43,13 @@ const Home = () => {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        position: fixed; /* Add this line */
-                        width: 100%; /* Add this line */
-                        top: 0; /* Add this line */
-                        z-index: 1000; /* Add this line */
+                        position: fixed; 
+                        width: 100%; 
+                        top: 0; 
+                        z-index: 1000; 
                     }
 
-                    /* Logo styling */
+                    
                     .logo img {
                         height: 100px;
                         transition: transform 0.3s ease;
@@ -61,7 +61,7 @@ const Home = () => {
                         transform: scale(1.1);
                     }
 
-                    /* Navigation styling */
+                    
                     nav {
                         display: flex;
                         align-items: center;
@@ -77,7 +77,7 @@ const Home = () => {
                         margin-right: 20px;
                     }
 
-                    /* Navigation list styling */
+                    
                     .nav-list {
                         list-style: none;
                         padding: 0;
@@ -101,7 +101,7 @@ const Home = () => {
                         color: #e0f7ff;
                     }
 
-                    /* Responsive design */
+                    
                     @media (max-width: 768px) {
                         .nav-list {
                             display: none;
@@ -132,7 +132,7 @@ const Home = () => {
                         }
                     }
 
-                    /* Hero section styling */
+                    
                     .hero {
                         text-align: center;
                         padding: 200px 20px;
@@ -175,7 +175,7 @@ const Home = () => {
                         color: #fff;
                     }
 
-                    /* Features section styling */
+                    
                     .features {
                         display: flex;
                         justify-content: center;
@@ -210,7 +210,7 @@ const Home = () => {
                         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
                     }
 
-                    /* Popular Courses section styling */
+                    
                     .popular-courses {
                         padding: 30px 20px;
                         background: #f9f9f9;
@@ -262,7 +262,7 @@ const Home = () => {
                         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
                     }
 
-                    /* Testimonials section styling */
+                    
                     .testimonials {
                         padding: 30px 20px;
                         background: #fff;
@@ -296,14 +296,14 @@ const Home = () => {
                         color: #555;
                     }
 
-                    /* Responsive adjustments for features section */
+                    
                     @media (max-width: 576px) {
                         .feature {
                             width: 100%;
                         }
                     }
 
-                    /* Responsive adjustments for popular courses section */
+                    
                     @media (max-width: 576px) {
                         .course-card {
                             max-width: 100%;
