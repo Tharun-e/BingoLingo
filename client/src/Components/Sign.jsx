@@ -148,7 +148,7 @@ const SignupPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    navigate('/login');
+    navigate('/');
   };
 
   return (
