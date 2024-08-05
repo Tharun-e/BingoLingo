@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,11 +37,16 @@ const Navbar = () => {
 
   return (
     <nav style={styles.navbar}>
-      <div style={styles.logo}>
-        <img src="/Photos/logo.jpeg" alt="Logo" style={styles.logoImage} />
+      <div style={styles.logoContainer}>
+        <div style={styles.logo}>
+          <img src="/Photos/logo.jpeg" alt="Logo" style={styles.logoImage} />
+        </div>
+        <div style={styles.brandName}>BINGOLINGO</div>
       </div>
       
-      <div style={styles.brandName}>BINGOLINGO</div>
+      <div style={styles.profileIcon}>
+        <AccountCircleIcon style={styles.profileIconImage} />
+      </div>
       
       <div style={styles.menuIcon} onClick={toggleMenu}>
         {menuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -62,7 +68,6 @@ const Navbar = () => {
 const styles = {
   navbar: {
     display: 'flex',
-    justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 20px',
     backgroundColor: '#FFDAB9',
@@ -73,31 +78,44 @@ const styles = {
     top: '0',
     left: '0',
     zIndex: '1000',
-    fontSize: '1.2rem', 
+    fontSize: '1.2rem',
   },
-  logo: {
+  logoContainer: {
+    display: 'flex',
+    alignItems: 'center',
     flex: 1,
   },
+  logo: {
+    marginRight: '20px',
+  },
   logoImage: {
-    height: '50px', 
+    height: '50px',
     cursor: 'pointer',
     borderRadius: '15px',
     border: '2px solid #fff',
   },
   brandName: {
-    flex: 2, 
-    textAlign: 'center',
     fontWeight: 'bold',
-    color: '#000', 
-    marginLeft: '-580px', 
-    fontSize:'25px',
+    color: '#000',
+    fontSize: '25px',
     fontFamily: '"Arial Black',
+    marginLeft: '500px', 
+  },
+  profileIcon: {
+    marginLeft: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    marginRight:'70px'
+  },
+  profileIconImage: {
+    fontSize: '2rem',
+    color: 'black',
   },
   menuIcon: {
     color: 'black',
     display: 'block',
     cursor: 'pointer',
-    fontSize: '2rem', 
+    fontSize: '2rem',
     marginRight: '60px', 
   },
   navList: {
@@ -106,8 +124,8 @@ const styles = {
     padding: '0',
     margin: '0',
     position: 'absolute',
-    top: '60px', 
-    right: '20px', 
+    top: '60px',
+    right: '20px',
     backgroundColor: '#FFDAB9',
     width: '200px',
     flexDirection: 'column',
@@ -140,14 +158,13 @@ const styles = {
   },
   '@media (max-width: 768px)': {
     menuIcon: {
-      display: 'block',
-      marginRight: '15px', 
+      marginRight: '15px',
     },
     navList: {
       flexDirection: 'column',
       position: 'absolute',
       top: '60px',
-      right: '20px', 
+      right: '20px',
       backgroundColor: '#0077ff',
       width: '200px',
     },

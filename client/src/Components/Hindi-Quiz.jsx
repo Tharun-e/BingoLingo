@@ -1,46 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const HindiQuiz = () => {
+    const [score, setScore] = useState(null);
+
+    const questions = [
+        { question: '1. What does "नमस्ते" mean in English?', answers: ['Hello', 'Goodbye', 'Thank you', 'Sorry'], correctAnswer: 'Hello' },
+        { question: '2. What does "धन्यवाद" mean in English?', answers: ['Hello', 'Goodbye', 'Thank you', 'Sorry'], correctAnswer: 'Thank you' },
+        { question: '3. What is the Hindi word for "Water"?', answers: ['पानी', 'दूध', 'जूस', 'चाय'], correctAnswer: 'पानी' },
+        { question: '4. How do you say "Good morning" in Hindi?', answers: ['सुप्रभात', 'शुभ रात्रि', 'नमस्ते', 'शुभ संध्या'], correctAnswer: 'सुप्रभात' },
+        { question: '5. What does "मित्र" mean in English?', answers: ['Friend', 'Enemy', 'Neighbor', 'Teacher'], correctAnswer: 'Friend' },
+        { question: '6. How do you say "How are you?" in Hindi?', answers: ['आप कैसे हैं?', 'नमस्ते', 'धन्यवाद', 'मुझे माफ़ करें'], correctAnswer: 'आप कैसे हैं?' },
+        { question: '7. What does "खुश" mean?', answers: ['Happy', 'Sad', 'Angry', 'Excited'], correctAnswer: 'Happy' },
+        { question: '8. What is the Hindi word for "Family"?', answers: ['परिवार', 'मित्र', 'समुदाय', 'पड़ोसी'], correctAnswer: 'परिवार' },
+        { question: '9. How do you say "Yes" in Hindi?', answers: ['हां', 'नहीं', 'शायद', 'कभी नहीं'], correctAnswer: 'हां' },
+        { question: '10. What does "अलविदा" mean in English?', answers: ['Goodbye', 'Hello', 'Thank you', 'Please'], correctAnswer: 'Goodbye' }
+    ];
+
     const submitQuiz = () => {
-        const answers = {
-            q1: "Hello",
-            q2: "Thank you"
-        };
-
-        let score = 0;
-        const form = document.getElementById('quiz-form');
-        const formData = new FormData(form);
-
-        formData.forEach((value, key) => {
-            if (answers[key] === value) {
-                score++;
+        let tempScore = 0;
+        questions.forEach((q, index) => {
+            const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
+            if (selectedOption && selectedOption.value === q.correctAnswer) {
+                tempScore++;
             }
         });
-
-        const results = document.getElementById('results');
-        const resultText = document.getElementById('result-text');
-        const tryAgainButton = document.getElementById('try-again-button');
-        
-        if (score === 0) {
-            resultText.innerHTML = `
-                <strong>Try Again!</strong> <br/>
-                You scored <span class="score">${score}</span> out of ${Object.keys(answers).length}.
-            `;
-            tryAgainButton.style.display = 'block';
-        } else {
-            resultText.innerHTML = `
-                <strong>Congratulations!</strong> <br/>
-                You scored <span class="score">${score}</span> out of ${Object.keys(answers).length}.
-            `;
-            tryAgainButton.style.display = 'none';
-        }
-
-        results.style.display = 'block';
-    }
+        setScore(tempScore);
+        document.getElementById('results').style.display = 'block';
+    };
 
     const closeModal = () => {
-        const results = document.getElementById('results');
-        results.style.display = 'none';
+        document.getElementById('results').style.display = 'none';
     }
 
     const tryAgain = () => {
@@ -50,8 +39,6 @@ const HindiQuiz = () => {
     return (
         <div>
             <style jsx>{`
-                
-
                 .quiz-container {
                     max-width: 600px;
                     margin: 0 auto;
@@ -123,7 +110,6 @@ const HindiQuiz = () => {
                     font-weight: bold;
                 }
 
-                
                 .modal {
                     display: none; 
                     position: fixed; 
@@ -182,34 +168,26 @@ const HindiQuiz = () => {
                 <section className="quiz-container">
                     <h1>Hindi Quiz</h1>
                     <form id="quiz-form">
-                        <div className="question">
-                            <p>1. What does "नमस्ते" mean in English?</p>
-                            <div className="options">
-                                <label><input type="radio" name="q1" value="Hello" /> Hello</label>
-                                <label><input type="radio" name="q1" value="Goodbye" /> Goodbye</label>
-                                <label><input type="radio" name="q1" value="Thank you" /> Thank you</label>
-                                <label><input type="radio" name="q1" value="Sorry" /> Sorry</label>
+                        {questions.map((q, index) => (
+                            <div key={index} className="question">
+                                <p>{q.question}</p>
+                                <div className="options">
+                                    {q.answers.map((answer, i) => (
+                                        <label key={i}>
+                                            <input type="radio" name={`question-${index}`} value={answer} /> {answer}
+                                        </label>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-
-                        <div className="question">
-                            <p>2. What does "धन्यवाद" mean in English?</p>
-                            <div className="options">
-                                <label><input type="radio" name="q2" value="Hello" /> Hello</label>
-                                <label><input type="radio" name="q2" value="Goodbye" /> Goodbye</label>
-                                <label><input type="radio" name="q2" value="Thank you" /> Thank you</label>
-                                <label><input type="radio" name="q2" value="Sorry" /> Sorry</label>
-                            </div>
-                        </div>
-
+                        ))}
                         <button type="button" onClick={submitQuiz}>Submit Answers</button>
                     </form>
 
                     <div id="results" className="modal">
                         <div className="modal-content">
                             <span className="close" onClick={closeModal}>&times;</span>
-                            <p id="result-text"></p>
-                            <button id="try-again-button" className="modal-button" onClick={() => window.location.reload()} style={{ display: 'none' }}>Try Again</button>
+                            <p id="result-text">You scored {score} out of {questions.length}.</p>
+                            <button id="try-again-button" className="modal-button" onClick={tryAgain} style={{ display: score === 0 ? 'block' : 'none' }}>Try Again</button>
                         </div>
                     </div>
                 </section>
