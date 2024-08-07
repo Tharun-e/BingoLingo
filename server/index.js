@@ -5,7 +5,7 @@ const server = http.createServer((req,res)=>{
         res.end("hello");
     }
     else if(req.method === 'GET' && req.url === '/path'){
-        res.end("hii");
+        res.end("hi");
     }
     else if(req.method === 'GET' && req.url === '/skct'){
         res.end("hiiii");
