@@ -1,4 +1,5 @@
-import { useState } from 'react';
+// App.js
+import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
@@ -19,6 +20,8 @@ import ReviewPage from './Components/Review';
 import SignupPage from './Components/Sign';
 import AboutUs from './Components/About';
 import Testimonial from './Components/Testimonial';
+import ProfilePage from './Components/ProfilePage';
+import { UserProvider } from './Components/UserContext';
 
 function App() {
   const location = useLocation();
@@ -40,16 +43,17 @@ function App() {
         <Route path='/learning/:language' element={<LearningPage />} />
         <Route path='/basic-french' element={<LearnBasicFrench />} />
         <Route path='/basic-hindi' element={<LearnBasicHindi />} />
-        <Route path='/basic-portugese' element={<LearnBasicPortuguese />} />
+        <Route path='/basic-portuguese' element={<LearnBasicPortuguese />} />
         <Route path='/french-quiz' element={<FrenchQuiz />} />
         <Route path='/hindi-quiz' element={<HindiQuiz />} />
-        <Route path='/portugese-quiz' element={<PortugueseQuiz />} />
+        <Route path='/portuguese-quiz' element={<PortugueseQuiz />} />
         <Route path='/feedback' element={<FAQAndHelp />} />
         <Route path='/terms' element={<TermsAndConditions />} />
         <Route path='/privacy' element={<PrivacyPolicy />} />
         <Route path='/review' element={<ReviewPage />} />
         <Route path='/about' element={<AboutUs />} />
         <Route path='/testimonials' element={<Testimonial />} />
+        <Route path='/profile' element={<ProfilePage />} />
       </Routes>
       {shouldDisplayFooter && <Footer />}
     </div>
@@ -59,7 +63,9 @@ function App() {
 function AppWrapper() {
   return (
     <BrowserRouter>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </BrowserRouter>
   );
 }

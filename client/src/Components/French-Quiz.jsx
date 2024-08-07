@@ -22,21 +22,32 @@ function FrenchQuiz() {
     ];
 
     const submitQuiz = () => {
-        const correctAnswers = questions.reduce((acc, curr, index) => {
-            acc[`french-${index + 1}`] = curr.correctAnswer;
+        const correctAnswers = questions.map((question, index) => {
+            if (question.correctAnswer) {
+                return {
+                    [`french-${index + 1}`]: question.correctAnswer,
+                };
+            }
+            return null;
+        }).reduce((acc, curr) => {
+            if (curr) {
+                return { ...acc, ...curr };
+            }
             return acc;
         }, {});
-
+    
         let tempScore = 0;
-        for (let key in correctAnswers) {
+        Object.keys(correctAnswers).forEach((key) => {
             const selectedOption = document.querySelector(`input[name="${key}"]:checked`);
             if (selectedOption && selectedOption.value === correctAnswers[key]) {
                 tempScore++;
             }
-        }
+        });
+    
         setScore(tempScore);
         document.getElementById('results').style.display = 'block';
     };
+    
 
     const closeModal = () => {
         document.getElementById('results').style.display = 'none';

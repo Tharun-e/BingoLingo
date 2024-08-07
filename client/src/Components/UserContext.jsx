@@ -1,13 +1,13 @@
-// src/UserContext.jsx
+// UserContext.js
 import React, { createContext, useState } from 'react';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [userEmail, setUserEmail] = useState('example@example.com'); // Replace with actual email or logic
+  const [user, setUser] = useState({ email: '' });
 
   return (
-    <UserContext.Provider value={{ userEmail }}>
+    <UserContext.Provider value={{ user, setUser }}>
       {children}
     </UserContext.Provider>
   );

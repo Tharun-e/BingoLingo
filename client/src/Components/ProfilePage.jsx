@@ -1,29 +1,37 @@
+// ProfilePage.js
 import React, { useContext } from 'react';
-import { UserContext } from './UserContext'; 
+import { UserContext } from './UserContext';
 
 const ProfilePage = () => {
-  const { userEmail } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.header}>Profile Page</h1>
-      <p style={styles.email}>Email: {userEmail}</p>
+    <div style={styles.profileContainer}>
+      <h2>Profile Page</h2>
+      {user.email ? (
+        <div style={styles.profileDetails}>
+          <p><strong>Email:</strong> {user.email}</p>
+        </div>
+      ) : (
+        <p>No user information available.</p>
+      )}
     </div>
   );
 };
 
 const styles = {
-  container: {
+  profileContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     padding: '20px',
-    maxWidth: '800px',
-    margin: '0 auto',
+    fontFamily: 'Arial, sans-serif',
   },
-  header: {
-    fontSize: '2rem',
-    marginBottom: '10px',
-  },
-  email: {
-    fontSize: '1.2rem',
+  profileDetails: {
+    backgroundColor: '#f0f0f0',
+    padding: '15px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   },
 };
 
