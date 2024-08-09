@@ -13,7 +13,21 @@ const server = http.createServer((req,res)=>{
     }
 });
 server.listen(3000);*/
-const express = require("express");
+import express from "express";
+import mongoose from "mongoose";
+import router from "./Router/Routes.js";
+const app = express();
+app.use(express.json());
+
+app.use("/dom",router)
+app.listen(3001);
+mongoose.connect("mongodb+srv://sarveshps205:mongodb123@cluster.39zf9.mongodb.net/sample_mflix?retryWrites=true&w=majority&appName=Cluster"
+
+).then(() => console.log("DB Connected"))
+.catch((err) => console.log("error"));
+
+
+/*const express = require("express");
 const server = express();
 server.get('/',(req,res)=>{
     res.send("hi");
@@ -27,4 +41,4 @@ server.get('/viv',(req,res)=>{
 server.get('/app',(req,res)=>{
     res.send("apple");
 });
-server.listen(3000);
+server.listen(3000);*/
