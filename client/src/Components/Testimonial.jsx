@@ -9,7 +9,7 @@ const Testimonial = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await axios.get('https://apigenerator.dronahq.com/api/6bfvsWuK/testimo'); 
+        const response = await axios.get('http://localhost:3000/test/b'); 
         setTestimonials(response.data);
         setLoading(false);
       } catch (err) {
@@ -28,7 +28,7 @@ const Testimonial = () => {
     <div style={styles.body}>
       <section style={styles.mainBanner}>
         <div style={styles.bannerContent}>
-          <h1 style={styles.mainBannerH1} >Testimonials</h1>
+          <h1 style={styles.mainBannerH1}>Testimonials</h1>
           <p style={styles.mainBannerP}>Here’s what people have to say</p>
         </div>
       </section>
@@ -37,9 +37,9 @@ const Testimonial = () => {
           {testimonials.map((testimonial, index) => (
             <div key={index} style={styles.testimonialCard}>
               <div style={styles.content}>
-                <h2 style={styles.name}>{testimonial.Name}</h2>
-                <p style={styles.language}>Language: {testimonial.Language}</p>
-                <p style={styles.feedback}>{testimonial.Feedback}</p>
+                <h2 style={styles.name}>{testimonial.username}</h2>
+                <p style={styles.language}>Language: {testimonial.language}</p>
+                <p style={styles.feedback}>{testimonial.feed}</p>
               </div>
             </div>
           ))}
@@ -63,14 +63,15 @@ const styles = {
     background: "url('/Photos/testo.gif') no-repeat center center/cover",
     color: '#fff',
     textAlign: 'center',
-    padding: '100px 20px',
+    padding: '100px,20px',
     flex: 1,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: '20px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    borderRadius: '8px'
+    borderRadius: '8px',
+    
   },
   bannerContent: {
     animation: 'fadeInUp 1s ease-in-out forwards'

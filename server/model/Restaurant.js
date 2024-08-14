@@ -1,9 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
 const schema = new Schema({
-    name: String,
     email: String,
     password: String,
+    language:String,
+     
 });
 
-export const Res = mongoose.model('Res', schema, 'users')
+export const Res = mongoose.model('Users', schema);

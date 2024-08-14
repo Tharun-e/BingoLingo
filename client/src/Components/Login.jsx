@@ -1,18 +1,74 @@
-// LoginPage.js
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { UserContext } from './UserContext';
 
 const LoginPage = () => {
-  const { setUser } = useContext(UserContext);
+  const { mail, setMail, lang, setLang, level, setLevel } = useContext(UserContext);
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [selectedLanguage, setSelectedLanguage] = useState('');
 
-  const handleSubmit = (e) => {
+
+  const checkCredentials = async (email, password) => {
+    try {
+      const response = await axios.get('http://localhost:3000/bom/n');
+      const data = response.data;
+      const user = data.find(user => user.email === email && user.password === password);
+      return user;
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      return null;
+    }
+  };
+
+  const updateUserLanguage = async (email, language) => {
+    const progress = 0; 
+    
+    try {
+      const response = await axios.put('http://localhost:3000/bom/n/language', {
+        email,
+        language,
+        progress
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = response.data;
+      console.log('Response from update language:', data);
+    } catch (error) {
+      console.error('Error updating user language:', error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
+    const password = e.target.password.value;
+    
+    const user = await checkCredentials(email, password);
+    
+    if (user) {
+     
+      setMail(email);
+      localStorage.setItem('mail',email);
 
-    setUser({ email });
-    navigate('/'); 
+      
+      if (selectedLanguage) {
+        await updateUserLanguage(email, selectedLanguage);
+      }
+
+      
+      if (selectedLanguage) {
+        navigate(`/learning/${selectedLanguage}`);
+      } else {
+        navigate('/');
+      }
+    } else {
+      setErrorMessage('Invalid email or password.');
+    }
   };
 
   return (
@@ -52,6 +108,21 @@ const LoginPage = () => {
               onBlur={(e) => e.target.style.borderColor = styles.inputGroupInput.borderColor}
             />
           </div>
+          <div style={styles.inputGroup}>
+            <label htmlFor="language" style={styles.inputGroupLabel}>Select Language</label>
+            <select
+              id="language"
+              name="language"
+              value={selectedLanguage}
+              onChange={(e) => setSelectedLanguage(e.target.value)}
+              style={styles.inputGroupInput}
+            >
+              <option value="">Select a language</option>
+              <option value="french">French</option>
+              <option value="hindi">Hindi</option>
+              <option value="portuguese">Portuguese</option>
+            </select>
+          </div>
           <button
             type="submit"
             style={styles.button}
@@ -66,6 +137,7 @@ const LoginPage = () => {
           >
             Login
           </button>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
           <p style={styles.signupLink}>
             Don't have an account?{' '}
             <a
@@ -75,6 +147,17 @@ const LoginPage = () => {
               onMouseOut={(e) => e.target.style.color = styles.signupLinkA.color}
             >
               Sign up
+            </a>
+          </p>
+          
+          <p style={styles.forgotPasswordLink}>
+            <a
+              href="/forget"
+              style={styles.forgotPasswordLinkA}
+              onMouseOver={(e) => e.target.style.color = styles.forgotPasswordLinkAHover.color}
+              onMouseOut={(e) => e.target.style.color = styles.forgotPasswordLinkA.color}
+            >
+              Forgot Password?
             </a>
           </p>
         </form>
@@ -117,16 +200,6 @@ const styles = {
     fontSize: '1.2em',
     margin: '10px 0 0',
     color: 'white'
-  },
-  fadeInUp: {
-    from: {
-      transform: 'translateY(20px)',
-      opacity: 0
-    },
-    to: {
-      transform: 'translateY(0)',
-      opacity: 1
-    }
   },
   loginContainer: {
     background: '#fff',
@@ -190,36 +263,22 @@ const styles = {
   signupLinkA: {
     color: '#00aaff',
     textDecoration: 'none',
-    fontWeight: 'bold',
-    transition: 'color 0.3s ease'
+    fontWeight: 'bold'
   },
   signupLinkAHover: {
     color: '#008ecc'
   },
-  '@media (max-width: 768px)': {
-    mainBannerH1: {
-      fontSize: '2.5em'
-    },
-    mainBannerP: {
-      fontSize: '1em'
-    },
-    loginContainer: {
-      padding: '1.5rem',
-      maxWidth: '90%',
-      top: 0
-    }
+  forgotPasswordLink: {
+    marginTop: '1rem',
+    color: '#555'
   },
-  '@media (max-width: 576px)': {
-    mainBannerH1: {
-      fontSize: '2em'
-    },
-    mainBannerP: {
-      fontSize: '0.9em'
-    },
-    loginContainer: {
-      padding: '1rem',
-      maxWidth: '100%'
-    }
+  forgotPasswordLinkA: {
+    color: '#00aaff',
+    textDecoration: 'none',
+    fontWeight: 'bold'
+  },
+  forgotPasswordLinkAHover: {
+    color: '#008ecc'
   }
 };
 

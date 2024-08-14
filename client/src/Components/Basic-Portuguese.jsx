@@ -230,7 +230,7 @@ const LearnBasicPortuguese = () => {
                         <p>Portuguese: <strong>Meu nome é</strong> - English: <strong>My name is</strong> <button onClick={() => speak('Meu nome é', 'pt-PT')}>🔊</button></p>
                         <p>Portuguese: <strong>Desculpe</strong> - English: <strong>Excuse me</strong> <button onClick={() => speak('Desculpe', 'pt-PT')}>🔊</button></p>
                     </div>
-                    <a href="/portugese-quiz" className="know-your-knowledge-button">Know Your Knowledge</a>
+                    <a href="/portuguese-quiz" className="know-your-knowledge-button">Know Your Knowledge</a>
                 </section>
             </main>
             

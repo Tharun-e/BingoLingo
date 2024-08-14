@@ -1,4 +1,3 @@
-// App.js
 import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Components/Navbar';
@@ -22,24 +21,25 @@ import AboutUs from './Components/About';
 import Testimonial from './Components/Testimonial';
 import ProfilePage from './Components/ProfilePage';
 import { UserProvider } from './Components/UserContext';
+import ForgotPassword from './Components/ForgotPass';
 
 function App() {
   const location = useLocation();
 
-  // Define the routes where Navbar and Footer should not be displayed
-  const noNavFooterRoutes = ['/Login', '/Sign'];
+  // Pages where the Navbar and Footer should not be displayed
+  const noNavFooterRoutes = ['/login', '/sign', '/forget'];
 
-  const shouldDisplayNavbar = !noNavFooterRoutes.includes(location.pathname);
-  const shouldDisplayFooter = !noNavFooterRoutes.includes(location.pathname);
+  const shouldDisplayNavbar = !noNavFooterRoutes.includes(location.pathname.toLowerCase());
+  const shouldDisplayFooter = !noNavFooterRoutes.includes(location.pathname.toLowerCase());
 
   return (
     <div>
       {shouldDisplayNavbar && <Navbar />}
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/Login' element={<LoginPage />} />
-        <Route path='/Sign' element={<SignupPage />} />
-        <Route path='/Courses' element={<Courses />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/sign' element={<SignupPage />} />
+        <Route path='/courses' element={<Courses />} />
         <Route path='/learning/:language' element={<LearningPage />} />
         <Route path='/basic-french' element={<LearnBasicFrench />} />
         <Route path='/basic-hindi' element={<LearnBasicHindi />} />
@@ -54,6 +54,7 @@ function App() {
         <Route path='/about' element={<AboutUs />} />
         <Route path='/testimonials' element={<Testimonial />} />
         <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/forget' element={<ForgotPassword />} />
       </Routes>
       {shouldDisplayFooter && <Footer />}
     </div>

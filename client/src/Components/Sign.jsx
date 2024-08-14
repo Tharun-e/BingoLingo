@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const styles = {
     '@import': "url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap')",
@@ -16,29 +17,29 @@ const SignupPage = () => {
       minHeight: '100vh'
     },
     mainBanner: {
-        background: "url('/Photos/slbb.gif') no-repeat center center/cover",
-        color: '#fff',
-        textAlign: 'center',
-        padding: '100px 20px',
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '-80px',
-        justifyContent: 'center',
-        animation: 'fadeInUp 1s ease-in-out forwards'
-      },
+      background: "url('/Photos/slbb.gif') no-repeat center center/cover",
+      color: '#fff',
+      textAlign: 'center',
+      padding: '100px 20px',
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+      marginTop: '-80px',
+      justifyContent: 'center',
+      animation: 'fadeInUp 1s ease-in-out forwards'
+    },
     bannerContent: {
       animation: 'fadeInUp 1s ease-in-out forwards'
     },
     mainBannerH1: {
       fontSize: '3em',
       margin: 0,
-      color:"white"
+      color: "white"
     },
     mainBannerP: {
       fontSize: '1.2em',
       margin: '10px 0 0',
-      color:"white"
+      color: "white"
     },
     fadeInUp: {
       from: {
@@ -145,10 +146,38 @@ const SignupPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    navigate('/');
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const confirmPassword = e.target.confirmPassword.value;
+
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/bom/n', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+       
+        navigate('/Login');
+      } else {
+        
+        setErrorMessage('Signup failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      setErrorMessage('An error occurred. Please try again later.');
+    }
   };
 
   return (
@@ -162,6 +191,7 @@ const SignupPage = () => {
       <div style={styles.signupContainer}>
         <div className="signup-form">
           <h1 style={styles.signupFormH1}>Sign Up</h1>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
           <form onSubmit={handleSubmit}>
             <div style={styles.inputGroup}>
               <label htmlFor="email" style={styles.inputGroupLabel}>Email</label>

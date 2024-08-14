@@ -1,7 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Courses = () => {
+    const navigate = useNavigate();
+
+    const handleEnroll = (courseName) => {
+        navigate(`/login?course=${encodeURIComponent(courseName)}`);
+    };
     return (
         <>
             <style jsx>{`
@@ -162,19 +167,19 @@ const Courses = () => {
                             <img src="/Photos/french.jpg" alt="French Course" style={{ width: '305px', height: '200px' }} />
                             <h3>French for Beginners</h3>
                             <p>Start with the basics of French and build your skills progressively.</p>
-                            <Link to="/learning/french" className="cta-button" id="french-enroll">Enroll Now</Link>
+                            <button className="cta-button" onClick={() => handleEnroll('French for Beginners')}>Enroll Now</button>
                         </div>
                         <div className="course-card">
                             <img src="/Photos/hindi.jpg" alt="Hindi Course" style={{ width: '240px', height: '200px' }} />
                             <h3>Hindi for Beginners</h3>
                             <p>Learn Hindi from scratch with interactive exercises and quizzes.</p>
-                            <Link to="/learning/hindi" className="cta-button" id="hindi-enroll">Enroll Now</Link>
+                            <button className="cta-button" onClick={() => handleEnroll('Hindi for Beginners')}>Enroll Now</button>
                         </div>
                         <div className="course-card">
                             <img src="/Photos/port.jpg" alt="Portuguese Course" style={{ width: '305px', height: '200px' }} />
                             <h3>Portuguese for Beginners</h3>
                             <p>Discover the essentials of Portuguese through engaging lessons and activities.</p>
-                            <Link to="/learning/portuguese" className="cta-button" id="portuguese-enroll">Enroll Now</Link>
+                            <button className="cta-button" onClick={() => handleEnroll('Portuguese for Beginners')}>Enroll Now</button>
                         </div>
                     </div>
                 </main>

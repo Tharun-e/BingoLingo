@@ -1,56 +1,91 @@
 import React, { useState } from 'react';
-import "./Styles.css";
-
-function FrenchQuiz() {
+import axios from 'axios';
+import './Styles.css'
+const FrenchQuiz = () => {
     const [score, setScore] = useState(null);
+    const [showTryAgain, setShowTryAgain] = useState(false);
+    const [showDoneButton, setShowDoneButton] = useState(false);
 
     const questions = [
-        { question: '1. What does "Bonjour" mean in English?', answers: ['Hello', 'Goodbye', 'Thank you', 'Please'], correctAnswer: 'Hello' },
-        { question: '2. What is the French word for "Thank you"?', answers: ['Merci', 'Bonjour', 'Au revoir', 'Excusez-moi'], correctAnswer: 'Merci' },
-        { question: '3. How do you say "Good morning" in French?', answers: ['Bonjour', 'Bonsoir', 'Bonne nuit', 'Salut'], correctAnswer: 'Bonjour' },
-        { question: '4. What does "Excusez-moi" mean?', answers: ['Excuse me', 'Goodbye', 'Yes', 'No'], correctAnswer: 'Excuse me' },
-        { question: '5. What is the French word for "Family"?', answers: ['Famille', 'Amis', 'École', 'Maison'], correctAnswer: 'Famille' },
-        { question: '6. How do you say "Good night" in French?', answers: ['Bonne nuit', 'Bonjour', 'Merci', 'À bientôt'], correctAnswer: 'Bonne nuit' },
-        { question: '7. What does "Félicitations" mean?', answers: ['Congratulations', 'Sorry', 'Please', 'Help'], correctAnswer: 'Congratulations' },
-        { question: '8. How do you say "How are you?" in French?', answers: ['Comment ça va?', 'Merci', 'Bonjour', 'Au revoir'], correctAnswer: 'Comment ça va?' },
-        { question: '9. What is the French word for "Water"?', answers: ['Eau', 'Vin', 'Pain', 'Lait'], correctAnswer: 'Eau' },
-        { question: '10. What does "Pardon" mean in English?', answers: ['Sorry', 'Thank you', 'Goodbye', 'Hello'], correctAnswer: 'Sorry' },
-        { question: '11. How do you say "Yes" in French?', answers: ['Oui', 'Non', 'Peut-être', 'Jamais'], correctAnswer: 'Oui' },
-        { question: '12. What is the French word for "Book"?', answers: ['Livre', 'Stylo', 'Table', 'Chaise'], correctAnswer: 'Livre' },
-        { question: '13. What does "Je suis désolé" mean?', answers: ['I am sorry', 'I am happy', 'I am hungry', 'I am tired'], correctAnswer: 'I am sorry' },
-        { question: '14. What is the French word for "School"?', answers: ['École', 'Université', 'Bibliothèque', 'Maison'], correctAnswer: 'École' }
+        { question: '1. What does "Bonjour" mean in English?', answers: ['Good morning', 'Goodbye', 'Please', 'Thank you'], correctAnswer: 'Good morning' },
+        { question: '2. How do you say "Thank you" in French?', answers: ['Merci', 'S’il vous plaît', 'Bonjour', 'Bonsoir'], correctAnswer: 'Merci' },
+        { question: '3. What is the French word for "Water"?', answers: ['Eau', 'Lait', 'Jus', 'Thé'], correctAnswer: 'Eau' },
+        { question: '4. How do you say "Good night" in French?', answers: ['Bonne nuit', 'Bonjour', 'Merci', 'Bonsoir'], correctAnswer: 'Bonne nuit' },
+        { question: '5. What does "Ami" mean in English?', answers: ['Friend', 'Enemy', 'Neighbor', 'Teacher'], correctAnswer: 'Friend' },
+        { question: '6. How do you say "How are you?" in French?', answers: ['Comment ça va?', 'Bonjour', 'Merci', 'Excusez-moi'], correctAnswer: 'Comment ça va?' },
+        { question: '7. What does "Heureux" mean?', answers: ['Happy', 'Sad', 'Angry', 'Excited'], correctAnswer: 'Happy' },
+        { question: '8. What is the French word for "Family"?', answers: ['Famille', 'Ami', 'Communauté', 'Voisin'], correctAnswer: 'Famille' },
+        { question: '9. How do you say "Yes" in French?', answers: ['Oui', 'Non', 'Peut-être', 'Jamais'], correctAnswer: 'Oui' },
+        { question: '10. What does "Au revoir" mean in English?', answers: ['Goodbye', 'Hello', 'Thank you', 'Please'], correctAnswer: 'Goodbye' }
     ];
 
-    const submitQuiz = () => {
-        const correctAnswers = questions.map((question, index) => {
-            if (question.correctAnswer) {
-                return {
-                    [`french-${index + 1}`]: question.correctAnswer,
-                };
+    const updateUserLevel = async (email, level) => {
+        try {
+            const response = await axios.put('http://localhost:3000/n/language', {
+                email,
+                language: 'French',
+                progress: level
+            });
+
+            if (response.status !== 200) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return null;
-        }).reduce((acc, curr) => {
-            if (curr) {
-                return { ...acc, ...curr };
-            }
-            return acc;
-        }, {});
-    
+
+            console.log('Level updated successfully:', response.data);
+        } catch (error) {
+            console.error('Error updating user level:', error);
+        }
+    };
+
+    const submitQuiz = async () => {
         let tempScore = 0;
-        Object.keys(correctAnswers).forEach((key) => {
-            const selectedOption = document.querySelector(`input[name="${key}"]:checked`);
-            if (selectedOption && selectedOption.value === correctAnswers[key]) {
+        const totalQuestions = questions.length;
+
+        questions.forEach((q, index) => {
+            const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
+            if (selectedOption && selectedOption.value === q.correctAnswer) {
                 tempScore++;
             }
         });
-    
+
         setScore(tempScore);
+
+        
+        const progress = (tempScore / totalQuestions) * 100;
+
+        
+        localStorage.setItem('progress', progress);
+
+      
+        const email = localStorage.getItem('email');
+        if (email) {
+            await updateUserLevel(email, progress);
+        } else {
+            console.error('Email not found in localStorage');
+        }
+
+       
+        if (tempScore >= 7) {
+            setShowDoneButton(true);
+        } else {
+            setShowTryAgain(true);
+        }
+
         document.getElementById('results').style.display = 'block';
     };
-    
+
+    const handleDone = () => {
+       
+        setScore(null);
+        setShowTryAgain(false);
+        setShowDoneButton(false);
+        document.getElementById('results').style.display = 'none';
+    };
 
     const closeModal = () => {
         document.getElementById('results').style.display = 'none';
+        setShowTryAgain(false);
+        setShowDoneButton(false);
     };
 
     const tryAgain = () => {
@@ -60,111 +95,46 @@ function FrenchQuiz() {
     return (
         <div>
             <style jsx>{`
-                /* Your existing styles */
-                html, body {
-                    margin: 0;
-                    padding: 0;
-                    font-family: 'Helvetica Neue', Arial, sans-serif;
-                    background: #f4f4f4;
-                    color: #333;
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                }
-
-                body {
-                    flex: 1;
-                }
-
-                header {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    background: #00aaff;
-                    color: #fff;
-                    padding: 10px 20px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                }
-
-                .logo img {
-                    height: 50px;
-                    transition: transform 0.3s ease;
-                }
-
-                .logo img:hover {
-                    transform: scale(1.1);
-                }
-
-                nav ul {
-                    list-style: none;
-                    padding: 0;
-                    margin: 0;
-                    display: flex;
-                    gap: 15px;
-                }
-
-                nav ul li {
-                    margin: 0;
-                }
-
-                nav ul li a {
-                    color: #fff;
-                    text-decoration: none;
-                    font-weight: 600;
-                    transition: color 0.3s ease;
-                }
-
-                nav ul li a:hover {
-                    color: #e0f7ff;
-                }
-
-                main {
-                    flex: 1;
-                    padding: 20px;
-                    background: #fff;
-                }
-
-                .quiz-section {
-                    margin: 30px auto;
+                .quiz-container {
                     max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
                     background: #fff;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    padding: 20px;
                 }
 
-                .quiz-section h2 {
-                    font-size: 1.8rem;
-                    margin-bottom: 20px;
-                    color: #00aaff;
-                }
-
-                .quiz-question {
+                .quiz-container h1 {
+                    text-align: center;
                     margin-bottom: 20px;
                 }
 
-                .quiz-question p {
+                .quiz-container .question {
+                    margin-bottom: 20px;
+                }
+
+                .quiz-container .question p {
                     font-size: 1.2rem;
-                    margin: 0;
+                    margin-bottom: 10px;
                 }
 
-                .quiz-options {
-                    list-style: none;
-                    padding: 0;
-                    margin: 10px 0;
+                .quiz-container .options {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
                 }
 
-                .quiz-options li {
+                .quiz-container .options label {
                     display: flex;
                     align-items: center;
-                    margin: 5px 0;
+                    cursor: pointer;
                 }
 
-                .quiz-options input[type="radio"] {
+                .quiz-container .options input[type="radio"] {
                     margin-right: 10px;
                 }
 
-                .submit-button {
+                .quiz-container button {
                     background-color: #00aaff;
                     color: #fff;
                     padding: 10px 20px;
@@ -172,32 +142,28 @@ function FrenchQuiz() {
                     border-radius: 5px;
                     font-size: 1rem;
                     cursor: pointer;
-                    transition: background-color 0.3s;
-                    text-align: center;
+                    display: block;
+                    margin: 20px auto;
                 }
 
-                .submit-button:hover {
+                .quiz-container button:hover {
                     background-color: #0088cc;
                 }
 
-                .result {
+                #results {
+                    display: none;
+                    text-align: center;
                     margin-top: 20px;
-                    text-align: center;
                 }
 
-                .result p {
-                    font-size: 1.2rem;
-                    color: #00aaff;
+                #results h2 {
+                    margin: 0;
                 }
 
-                footer {
-                    background: #00aaff;
-                    color: #fff;
-                    text-align: center;
-                    padding: 10px 20px;
-                    width: 100%;
-                    position: relative;
-                    bottom: 0;
+                .score {
+                    font-size: 2rem;
+                    color: #ff6600;
+                    font-weight: bold;
                 }
 
                 .modal {
@@ -252,48 +218,36 @@ function FrenchQuiz() {
                 .modal-button:hover {
                     background-color: #0088cc;
                 }
-
-                @media (max-width: 768px) {
-                    .quiz-section {
-                        padding: 15px;
-                    }
-
-                    .quiz-section h2 {
-                        font-size: 1.5rem;
-                    }
-                }
             `}</style>
-            
-            <main className="main">
-                <section className="quiz-section">
-                    <h2>French Quiz</h2>
+
+            <main>
+                <section className="quiz-container">
+                    <h1>French Quiz</h1>
                     <form id="quiz-form">
                         {questions.map((q, index) => (
-                            <div key={index} className="quiz-question">
+                            <div key={index} className="question">
                                 <p>{q.question}</p>
-                                <ul className="quiz-options">
-                                    {q.answers.map((answer, ansIndex) => (
-                                        <li key={ansIndex}>
-                                            <input
-                                                type="radio"
-                                                name={`french-${index + 1}`}
-                                                value={answer}
-                                            /> {answer}
-                                        </li>
+                                <div className="options">
+                                    {q.answers.map((answer, i) => (
+                                        <label key={i}>
+                                            <input type="radio" name={`question-${index}`} value={answer} /> {answer}
+                                        </label>
                                     ))}
-                                </ul>
+                                </div>
                             </div>
                         ))}
-                        <div style={{ textAlign: 'center' }}>
-                            <button type="button" className="submit-button" onClick={submitQuiz}>Submit Answers</button>
-                        </div>
+                        <button type="button" onClick={submitQuiz}>Submit Answers</button>
                     </form>
+
                     <div id="results" className="modal">
                         <div className="modal-content">
                             <span className="close" onClick={closeModal}>&times;</span>
-                            <p id="result-text">You got {score} out of {questions.length} correct.</p>
-                            {score === 0 && (
-                                <button className="modal-button" onClick={tryAgain}>Try Again</button>
+                            <p id="result-text">You scored {score} out of {questions.length}.</p>
+                            {showDoneButton && (
+                                <button id="done-button" className="modal-button" onClick={handleDone}>Done</button>
+                            )}
+                            {showTryAgain && (
+                                <button id="try-again-button" className="modal-button" onClick={tryAgain}>Try Again</button>
                             )}
                         </div>
                     </div>
@@ -301,6 +255,6 @@ function FrenchQuiz() {
             </main>
         </div>
     );
-}
+};
 
 export default FrenchQuiz;

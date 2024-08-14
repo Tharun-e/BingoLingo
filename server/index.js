@@ -16,13 +16,18 @@ server.listen(3000);*/
 import express from "express";
 import mongoose from "mongoose";
 import router from "./Router/Routes.js";
+import cors from "cors";
+import router1 from "./Router/Route1.js";
+import router2 from "./Router/Route2.js";
+import route3 from "./Router/Route3.js";
+
 const app = express();
 app.use(express.json());
-
-app.use("/dom",router)
-app.listen(3001);
-mongoose.connect("mongodb+srv://sarveshps205:mongodb123@cluster.39zf9.mongodb.net/sample_mflix?retryWrites=true&w=majority&appName=Cluster"
-
+app.use(cors());
+app.use('/test',router1)
+app.use('/bom', route3);
+app.listen(3000);
+mongoose.connect("mongodb+srv://project:mongo123@cluster0.3h2tc7p.mongodb.net/Login?retryWrites=true&w=majority&appName=Cluster0"
 ).then(() => console.log("DB Connected"))
 .catch((err) => console.log("error"));
 

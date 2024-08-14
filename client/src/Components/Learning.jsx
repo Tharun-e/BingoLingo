@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 const LearningPage = () => {
-    const { language } = useParams(); 
+    const { language } = useParams();
     const [content, setContent] = useState({
         title: 'Course Not Found',
         introText: 'Sorry, we could not find the course you are looking for.',
@@ -11,13 +11,12 @@ const LearningPage = () => {
     });
 
     useEffect(() => {
-        
         switch (language) {
             case 'french':
                 setContent({
                     title: 'Learn French',
                     introText: 'Welcome to the French language course. You will start with basic greetings, vocabulary, and essential grammar.',
-                    videoSrc: 'https://www.youtube.com/embed/wtiFx1TRCq0?si=diAR8WO4jAjTip1I', 
+                    videoSrc: 'https://www.youtube.com/embed/wtiFx1TRCq0?si=diAR8WO4jAjTip1I',
                     learnMoreHref: '/basic-french',
                 });
                 break;
@@ -25,7 +24,7 @@ const LearningPage = () => {
                 setContent({
                     title: 'Learn Hindi',
                     introText: 'Welcome to the Hindi language course. Begin with learning basic pronunciation, essential vocabulary, and simple sentences.',
-                    videoSrc: 'https://www.youtube.com/embed/1lrz11BbqCA?si=amNu91gGxdSEJ7uJ', 
+                    videoSrc: 'https://www.youtube.com/embed/1lrz11BbqCA?si=amNu91gGxdSEJ7uJ',
                     learnMoreHref: '/basic-hindi',
                 });
                 break;
@@ -33,8 +32,8 @@ const LearningPage = () => {
                 setContent({
                     title: 'Learn Portuguese',
                     introText: 'Welcome to the Portuguese language course. Start with basic expressions, common phrases, and introductory grammar.',
-                    videoSrc: 'https://www.youtube.com/embed/RkOqjkero10?si=-Uvw-GXl89-pFRk1', 
-                    learnMoreHref: '/basic-portugese',
+                    videoSrc: 'https://www.youtube.com/embed/RkOqjkero10?si=-Uvw-GXl89-pFRk1',
+                    learnMoreHref: '/basic-portuguese',
                 });
                 break;
             default:
@@ -51,7 +50,6 @@ const LearningPage = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
             <style jsx>{`
-                
                 html, body {
                     margin: 0;
                     padding: 0;
@@ -63,21 +61,19 @@ const LearningPage = () => {
                     flex-direction: column;
                 }
 
-                
                 .main-container {
                     display: flex;
                     flex-direction: column;
                     flex: 1;
                 }
 
-               
                 main {
                     padding: 20px;
                     background: #fff;
                     margin: 0 auto;
                     max-width: 800px;
                     text-align: center;
-                    flex: 1; 
+                    flex: 1;
                 }
 
                 #learning-title {
@@ -153,7 +149,6 @@ const LearningPage = () => {
                     transform: scale(1.05);
                 }
 
-                
                 .main-banner {
                     background: url('/Photos/lb1.gif') no-repeat center center;
                     background-size: cover;
@@ -193,7 +188,6 @@ const LearningPage = () => {
                     }
                 }
 
-                
                 @media (max-width: 1200px) {
                     .main-banner h1 {
                         font-size: 2.5em;
@@ -256,12 +250,12 @@ const LearningPage = () => {
                                     frameBorder="0"
                                     allowFullScreen
                                     title="Introduction Video"
-                                    style={{ height: '600px' }}
+                                    style={{ height: '250px' }}  
                                 ></iframe>
                             </div>
                         </div>
                         <div className="learn-more-section">
-                            <Link to={content.learnMoreHref} id="learn-more-button" className="learn-more-button">Learn More</Link>
+                            <Link to={content.learnMoreHref} className="learn-more-button">Learn More</Link>
                         </div>
                     </div>
                 </main>

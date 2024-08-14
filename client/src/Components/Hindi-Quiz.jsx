@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const HindiQuiz = () => {
     const [score, setScore] = useState(null);
+    const [showTryAgain, setShowTryAgain] = useState(false);
+    const [showDoneButton, setShowDoneButton] = useState(false);
 
     const questions = [
         { question: '1. What does "नमस्ते" mean in English?', answers: ['Hello', 'Goodbye', 'Thank you', 'Sorry'], correctAnswer: 'Hello' },
@@ -16,25 +19,78 @@ const HindiQuiz = () => {
         { question: '10. What does "अलविदा" mean in English?', answers: ['Goodbye', 'Hello', 'Thank you', 'Please'], correctAnswer: 'Goodbye' }
     ];
 
-    const submitQuiz = () => {
+    const updateUserLevel = async (email, level) => {
+        try {
+            const response = await axios.put('http://localhost:3000/n/language', {
+                email,
+                language: 'Hindi',
+                progress: level
+            });
+
+            if (response.status !== 200) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            console.log('Level updated successfully:', response.data);
+        } catch (error) {
+            console.error('Error updating user level:', error);
+        }
+    };
+
+    const submitQuiz = async () => {
         let tempScore = 0;
+        const totalQuestions = questions.length;
+
         questions.forEach((q, index) => {
             const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
             if (selectedOption && selectedOption.value === q.correctAnswer) {
                 tempScore++;
             }
         });
+
         setScore(tempScore);
+
+        
+        const progress = (tempScore / totalQuestions) * 100;
+
+        
+        localStorage.setItem('progress', progress);
+
+       
+        const email = localStorage.getItem('email');
+        if (email) {
+            await updateUserLevel(email, progress);
+        } else {
+            console.error('Email not found in localStorage');
+        }
+
+       
+        if (tempScore >= 7) {
+            setShowDoneButton(true);
+        } else {
+            setShowTryAgain(true);
+        }
+
         document.getElementById('results').style.display = 'block';
+    };
+
+    const handleDone = () => {
+        
+        setScore(null);
+        setShowTryAgain(false);
+        setShowDoneButton(false);
+        document.getElementById('results').style.display = 'none';
     };
 
     const closeModal = () => {
         document.getElementById('results').style.display = 'none';
-    }
+        setShowTryAgain(false);
+        setShowDoneButton(false);
+    };
 
     const tryAgain = () => {
         window.location.reload();
-    }
+    };
 
     return (
         <div>
@@ -187,7 +243,12 @@ const HindiQuiz = () => {
                         <div className="modal-content">
                             <span className="close" onClick={closeModal}>&times;</span>
                             <p id="result-text">You scored {score} out of {questions.length}.</p>
-                            <button id="try-again-button" className="modal-button" onClick={tryAgain} style={{ display: score === 0 ? 'block' : 'none' }}>Try Again</button>
+                            {showDoneButton && (
+                                <button id="done-button" className="modal-button" onClick={handleDone}>Done</button>
+                            )}
+                            {showTryAgain && (
+                                <button id="try-again-button" className="modal-button" onClick={tryAgain}>Try Again</button>
+                            )}
                         </div>
                     </div>
                 </section>

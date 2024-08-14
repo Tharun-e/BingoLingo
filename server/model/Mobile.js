@@ -1,21 +1,17 @@
 import mongoose, { Schema } from "mongoose";
 
-const schema = new Schema({
-    BrandName: String,
-    modelName: String,
-    price: Number,
-    ram: Number,
-    Storage: Number,
-    battery: Number,
+const schema1 = new Schema({
+    email:String,
+    password:String,
+    language:String,
+    level:{
+        type:Number,
+        min:0,
+        max:100
+    }
+
 });
 
-export const Mobiles = mongoose.model('mobile',schema);
+export const Mobiles = mongoose.model('enrollments',schema1);
 
 
-
-//Collection creation
-//mongoose.mode(collectionname,schema)
-
-//model.find() => is used to get all data
-//const data = model(req.body) => checks the structure...
-//data.save => saves in the database
