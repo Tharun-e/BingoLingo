@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Styles.css'
+import { useNavigate } from 'react-router-dom';
 const FrenchQuiz = () => {
     const [score, setScore] = useState(null);
     const [showTryAgain, setShowTryAgain] = useState(false);
     const [showDoneButton, setShowDoneButton] = useState(false);
-
+    const navigate = useNavigate();
     const questions = [
         { question: '1. What does "Bonjour" mean in English?', answers: ['Good morning', 'Goodbye', 'Please', 'Thank you'], correctAnswer: 'Good morning' },
         { question: '2. How do you say "Thank you" in French?', answers: ['Merci', 'S’il vous plaît', 'Bonjour', 'Bonsoir'], correctAnswer: 'Merci' },
@@ -75,12 +76,17 @@ const FrenchQuiz = () => {
     };
 
     const handleDone = () => {
-       
+        document.querySelectorAll('input[type="radio"]:checked').forEach((input) => {
+            input.checked = false;
+        });
+    
         setScore(null);
         setShowTryAgain(false);
         setShowDoneButton(false);
         document.getElementById('results').style.display = 'none';
+        navigate('/courses');
     };
+    
 
     const closeModal = () => {
         document.getElementById('results').style.display = 'none';
@@ -244,7 +250,7 @@ const FrenchQuiz = () => {
                             <span className="close" onClick={closeModal}>&times;</span>
                             <p id="result-text">You scored {score} out of {questions.length}.</p>
                             {showDoneButton && (
-                                <button id="done-button" className="modal-button" onClick={handleDone}>Done</button>
+                                <button id="done-button" className="modal-button" onClick={handleDone}>Course Completed Successfully</button>
                             )}
                             {showTryAgain && (
                                 <button id="try-again-button" className="modal-button" onClick={tryAgain}>Try Again</button>

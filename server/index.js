@@ -27,7 +27,7 @@ app.use(cors());
 app.use('/test',router1)
 app.use('/bom', route3);
 app.listen(3000);
-mongoose.connect("mongodb+srv://project:mongo123@cluster0.3h2tc7p.mongodb.net/Login?retryWrites=true&w=majority&appName=Cluster0"
+mongoose.connect("mongodb+srv://project:mongo123@cluster0.3h2tc7p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 ).then(() => console.log("DB Connected"))
 .catch((err) => console.log("error"));
 

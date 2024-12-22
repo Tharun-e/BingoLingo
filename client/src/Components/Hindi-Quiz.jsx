@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 const HindiQuiz = () => {
     const [score, setScore] = useState(null);
     const [showTryAgain, setShowTryAgain] = useState(false);
     const [showDoneButton, setShowDoneButton] = useState(false);
-
+    const navigate = useNavigate();
     const questions = [
         { question: '1. What does "नमस्ते" mean in English?', answers: ['Hello', 'Goodbye', 'Thank you', 'Sorry'], correctAnswer: 'Hello' },
         { question: '2. What does "धन्यवाद" mean in English?', answers: ['Hello', 'Goodbye', 'Thank you', 'Sorry'], correctAnswer: 'Thank you' },
@@ -75,12 +75,17 @@ const HindiQuiz = () => {
     };
 
     const handleDone = () => {
-        
+        document.querySelectorAll('input[type="radio"]:checked').forEach((input) => {
+            input.checked = false;
+        });
+    
         setScore(null);
         setShowTryAgain(false);
         setShowDoneButton(false);
         document.getElementById('results').style.display = 'none';
+        navigate('/courses')
     };
+    
 
     const closeModal = () => {
         document.getElementById('results').style.display = 'none';
@@ -244,7 +249,7 @@ const HindiQuiz = () => {
                             <span className="close" onClick={closeModal}>&times;</span>
                             <p id="result-text">You scored {score} out of {questions.length}.</p>
                             {showDoneButton && (
-                                <button id="done-button" className="modal-button" onClick={handleDone}>Done</button>
+                                <button id="done-button" className="modal-button" onClick={handleDone}>Course Completed Successfully</button>
                             )}
                             {showTryAgain && (
                                 <button id="try-again-button" className="modal-button" onClick={tryAgain}>Try Again</button>

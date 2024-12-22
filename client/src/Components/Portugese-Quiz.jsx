@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios';
 
 const PortugueseQuiz = () => {
     const [score, setScore] = useState(null);
     const [showTryAgain, setShowTryAgain] = useState(false);
     const [showDoneButton, setShowDoneButton] = useState(false);
+    const navigate = useNavigate(); // Initialize navigate
 
     const questions = [
         { question: '1. What is "Olá" in English?', answers: ['Hello', 'Goodbye', 'Please', 'Thank you'], correctAnswer: 'Hello' },
@@ -50,15 +52,10 @@ const PortugueseQuiz = () => {
 
         setScore(tempScore);
 
-        
         if (tempScore >= 7) {
-            
             const progress = (tempScore / totalQuestions) * 100;
-
-           
             localStorage.setItem('progress', progress);
 
-          
             const email = localStorage.getItem('email');
             if (email) {
                 await updateUserLevel(email, progress);
@@ -75,11 +72,16 @@ const PortugueseQuiz = () => {
     };
 
     const handleDone = () => {
-       
+        document.querySelectorAll('input[type="radio"]:checked').forEach((input) => {
+            input.checked = false;
+        });
+
         setScore(null);
         setShowTryAgain(false);
         setShowDoneButton(false);
         document.getElementById('results').style.display = 'none';
+
+        navigate('/courses'); // Redirect to Courses page
     };
 
     const closeModal = () => {
@@ -219,7 +221,6 @@ const PortugueseQuiz = () => {
                     background-color: #0088cc;
                 }
             `}</style>
-
             <main>
                 <section className="quiz-container">
                     <h1>Portuguese Quiz</h1>
@@ -244,7 +245,7 @@ const PortugueseQuiz = () => {
                             <span className="close" onClick={closeModal}>&times;</span>
                             <p id="result-text">You scored {score} out of {questions.length}.</p>
                             {showDoneButton && (
-                                <button id="done-button" className="modal-button" onClick={handleDone}>Done</button>
+                                <button id="done-button" className="modal-button" onClick={handleDone}>Course Completed Successfully</button>
                             )}
                             {showTryAgain && (
                                 <button id="try-again-button" className="modal-button" onClick={tryAgain}>Try Again</button>

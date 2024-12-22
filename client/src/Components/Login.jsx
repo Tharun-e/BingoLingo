@@ -186,7 +186,7 @@ const styles = {
     alignItems: 'center',
     marginTop: '-80px',
     justifyContent: 'center',
-    animation: 'fadeInUp 1s ease-in-out forwards'
+    
   },
   bannerContent: {
     animation: 'fadeInUp 1s ease-in-out forwards'
